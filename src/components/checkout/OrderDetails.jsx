@@ -23,12 +23,12 @@ function OrderDetails() {
       <Flex direction="column" p="2" w="100%">
         <Flex w="100%" justify="space-between" mb="3">
           <Text>Sub Total</Text>
-          <Text>$ {subTotal}</Text>
+          <Text>Rp. {subTotal}</Text>
         </Flex>
 
         <Flex w="100%" justify="space-between" mb="3">
           <Text>Delivery</Text>
-          <Text>$ {withDelivery ? shippingCost : "0"}</Text>
+          <Text>Rp. {withDelivery ? shippingCost : "0"}</Text>
         </Flex>
 
         <Flex w="100%" justify="space-between" mb="3">
@@ -36,7 +36,7 @@ function OrderDetails() {
             Total
           </Text>
           <Text fontSize="lg" fontWeight="medium">
-            $ {total}
+            Rp. {total}
           </Text>
         </Flex>
       </Flex>

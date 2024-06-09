@@ -13,7 +13,7 @@ export default function OrderItem({ item }) {
       <span>x</span>
       <Text w="70%">{title}</Text>
 
-      <Text>$ {itemTotal}</Text>
+      <Text>Rp. {itemTotal}</Text>
     </Flex>
   );
 }
