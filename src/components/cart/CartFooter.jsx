@@ -10,7 +10,7 @@ function CartFooter() {
   return (
     <Box w="100%" bg="white" py="6" position="absolute" bottom="0" right="0" px="4">
       <Text fontSize="2xl" textAlign="right" mb="2">
-        Sub Total: Rp. {subTotal.toFixed(2)}
+        Sub Total: Rp. {subTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
       </Text>
       <Button onClick={() => router.push("/checkout")} w="100%" variantColor="bluex" size="lg" disabled={!subTotal}>
         CHECKOUT

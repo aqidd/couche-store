@@ -2,7 +2,7 @@ export default [
   {
     id: "1",
     title: "katun jepang dino",
-    price: 160000,
+    price: 800000,
     offerPrice: null,
     stock: 12,
     img: "katun jepang dino.jpg",
@@ -11,7 +11,7 @@ export default [
   {
     id: "2",
     title: "katun jepang poppy",
-    price: 160000,
+    price: 800000,
     offerPrice: null,
     stock: 12,
     img: "katun jepang poppy.jpg",
@@ -20,8 +20,8 @@ export default [
   {
     id: "3",
     title: "katun lokal anak beruang",
-    price: 160000,
-    offerPrice: null,
+    price: 800000,
+    offerPrice: 300000,
     stock: 12,
     img: "katun lokal anak beruang.jpg",
     category: "katun lokal",
@@ -29,7 +29,7 @@ export default [
   {
     id: "4",
     title: "katun lokal anak kelinci",
-    price: 160000,
+    price: 800000,
     offerPrice: null,
     stock: 12,
     img: "katun lokal anak kelinci.jpg",
@@ -38,7 +38,7 @@ export default [
   {
     id: "5",
     title: "katun lokal anak merah",
-    price: 160000,
+    price: 800000,
     offerPrice: null,
     stock: 12,
     img: "katun lokal anak merah.jpg",
@@ -47,7 +47,7 @@ export default [
   {
     id: "6",
     title: "tencel organik 60 polos",
-    price: 160000,
+    price: 800000,
     offerPrice: null,
     stock: 12,
     img: "tencel organik 60 polos.jpg",

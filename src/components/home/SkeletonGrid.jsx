@@ -2,7 +2,7 @@ import { Box, Grid } from "@chakra-ui/core";
 import Skeleton from "react-loading-skeleton";
 
 const SkeletonCard = () => (
-  <Box w="100%" h="300px" bg="white" p="8">
+  <Box w="100%" h="350px" bg="white" p="8">
     <Skeleton count={1} width={"100%"} height={120} />
     <Box mt="2">
       <Skeleton count={1} width={80} height={20} />

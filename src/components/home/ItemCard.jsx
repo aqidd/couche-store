@@ -42,7 +42,7 @@ export default function ItemCard({ item }) {
     <>
       <Flex
         w="100%"
-        h="300px"
+        h="350px"
         bg="white"
         direction="column"
         justify="center"
@@ -58,18 +58,18 @@ export default function ItemCard({ item }) {
           </Badge>
         )}
 
-        <Box w="100%" h="50%" onClick={() => setModal(true)}>
+        <Box w="100%" h="60%" onClick={() => setModal(true)}>
           <Image size="100%" objectFit="cover" src={`/images/${img}`} fallbackSrc="/images/fallbackImg.png" alt="" />
         </Box>
 
-        <Box w="85%" my="3">
+        <Box w="85%" mt="3">
           <Flex align="flex-end">
             <Text fontSize="md" fontWeight="medium">
-              Rp. {offerPrice || price}
+              Rp. {(offerPrice || price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
             </Text>
             {offerPrice && (
               <Text ml="1" fontSize="sm" fontWeight="medium" as="del" color="gray.400">
-                Rp. {price}
+                Rp. {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
               </Text>
             )}
           </Flex>
@@ -79,7 +79,7 @@ export default function ItemCard({ item }) {
           </Text>
         </Box>
 
-        <CounterBtn item={item} counter={counter} />
+        <CounterBtn item={item} counter={counter}/>
       </Flex>
 
       <ItemModal showModal={showModal} setModal={setModal} img={img} />

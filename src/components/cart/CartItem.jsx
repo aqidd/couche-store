@@ -7,7 +7,7 @@ export default function CartItem({ item }) {
   const { title, price, offerPrice, img, qty } = item;
   const setCart = useSetRecoilState(refreshCart);
 
-  const itemTotal = (offerPrice ? offerPrice * qty : price * qty).toFixed(2);
+  const itemTotal = (offerPrice ? offerPrice * qty : price * qty);
   return (
     <Flex w="100%" justify="flex-start" align="center" position="relative" borderTop="1px solid black" py="2">
       <Box w="100px" h="100px" mr="2">
@@ -19,13 +19,13 @@ export default function CartItem({ item }) {
           {title}
         </Text>
 
-        <Text fontSize="sm">Unit Price Rp.{offerPrice || price}</Text>
+        <Text fontSize="sm">Unit Price Rp. {(offerPrice || price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</Text>
 
         <CounterBtn type="cart" item={item} />
       </Box>
 
       <Text fontSize="lg" fontWeight="medium" position="absolute" bottom="10px" right="12px">
-        Rp. {itemTotal}
+        Rp. {itemTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
       </Text>
 
       <CloseButton size="sm" position="absolute" top="10px" right="12px" onClick={() => setCart({ item, n: 0 })} />
