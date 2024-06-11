@@ -9,7 +9,7 @@ export default [
     category: "katun jepang",
   },
   {
-    id: "1",
+    id: "2",
     title: "katun jepang poppy",
     price: 160000,
     offerPrice: null,
@@ -18,7 +18,7 @@ export default [
     category: "katun jepang",
   },
   {
-    id: "1",
+    id: "3",
     title: "katun lokal anak beruang",
     price: 160000,
     offerPrice: null,
@@ -27,7 +27,7 @@ export default [
     category: "katun lokal",
   },
   {
-    id: "1",
+    id: "4",
     title: "katun lokal anak kelinci",
     price: 160000,
     offerPrice: null,
@@ -36,7 +36,7 @@ export default [
     category: "katun lokal",
   },
   {
-    id: "1",
+    id: "5",
     title: "katun lokal anak merah",
     price: 160000,
     offerPrice: null,
@@ -45,7 +45,7 @@ export default [
     category: "katun lokal",
   },
   {
-    id: "1",
+    id: "6",
     title: "tencel organik 60 polos",
     price: 160000,
     offerPrice: null,
