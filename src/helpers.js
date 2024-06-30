@@ -10,19 +10,19 @@ export const getFormValidations = () => {
     name: {
       required: {
         value: true,
-        message: "Name is required",
+        message: "Nama wajib diisi",
       },
       maxLength: {
-        value: 20,
-        message: "Max Length 20 chars",
+        value: 30,
+        message: "Maksimal 30 karakter",
       },
       minLength: {
         value: 5,
-        message: "Min Length 5 chars",
+        message: "Minimal 5 karakter",
       },
       pattern: {
         value: /^[A-Za-z ]{5,20}$/,
-        message: "Icorrect Name",
+        message: "Nama tidak valid",
       },
     },
 
@@ -30,59 +30,52 @@ export const getFormValidations = () => {
     phone: {
       required: {
         value: true,
-        message: "Phone is required",
+        message: "No WA wajib diisi",
       },
       maxLength: {
         value: 20,
-        message: "Max Length 20 chars",
+        message: "Maksimal 20 karakter",
       },
       minLength: {
         value: 5,
-        message: "Min Length 5 chars",
+        message: "Minimal 5 karakter",
       },
       pattern: {
         value: /^[0-9]{5,20}$/,
-        message: "Icorrect Phone",
+        message: "No WA tidak valid",
       },
     },
     //address
     address: {
       required: {
         value: true,
-        message: "Address is required",
+        message: "Alamat wajib diisi",
       },
       maxLength: {
-        value: 20,
-        message: "Max Length 20 chars",
+        value: 40,
+        message: "Maksimal 40 karakter",
       },
       minLength: {
         value: 5,
-        message: "Min Length 5 chars",
+        message: "Minimal 5 karakter",
       },
       pattern: {
         value: /^[0-9a-zA-Z ]{5,20}$/,
-        message: "Icorrect Address",
+        message: "Alamat tidak valid",
       },
     },
     //city
     city: {
       required: {
         value: true,
-        message: "City is required",
-      },
-    },
-    //schedule
-    schedule: {
-      required: {
-        value: true,
-        message: "Schedule is required",
+        message: "Kota wajib dipilih",
       },
     },
     //extra comment
     comment: {
       maxLength: {
         value: 25,
-        message: "Max Length 25 chars",
+        message: "Maksimal 25 karakter",
       },
     },
   };
@@ -99,7 +92,7 @@ export function getWspUrl(orderData) {
 
   {
     Object.values(cartItems).forEach((item) => {
-      const itemTotal = (item.offerPrice ? item.offerPrice * item.qty : item.price * item.qty).toFixed(2);
+      const itemTotal = (item.offerPrice ? item.offerPrice * item.qty : item.price * item.qty).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
       cartListforUrl += `%0A%0A - *(${item.qty})* ${item.title} --> _*$${itemTotal}*_`;
     });
   }
@@ -107,8 +100,8 @@ export function getWspUrl(orderData) {
   const WSP_URL = `https://api.whatsapp.com/send/?phone=${N}&text=%2A${"Order"}%3A%2A%20${ID}%0A%0A%2A${"Client"}%3A%2A%20${name}%0A%0A%2A${"Phone"}%3A%2A%20${phone}%0A%0A%2A${
     withDelivery ? "Address" + "%3A%2A%20" + address + " %0A%0A%2A" : ""
   }${withDelivery ? "City" + "%3A%2A%20" + city + "%0A%0A%2A" : ""}${
-    withDelivery ? "Schedule" + "%3A%2A%20" + schedule + "%0A%0A%2A" : ""
-  }${comment ? "Comment" + "%3A%2A%20" + comment + "%0A%0A%2A" : ""}${"Items List"}%3A%2A${cartListforUrl}%0A%0A%2A${
+    comment ? "Comment" + "%3A%2A%20" + comment + "%0A%0A%2A" : ""}
+    ${"Items List"}%3A%2A${cartListforUrl}%0A%0A%2A${
     withDelivery ? "Sub Total" + "%3A%2A%20Rp. " + subTotal + " %0A%0A%2A" : ""
   }${withDelivery ? "Delivery Fee" + "%3A%2A%20Rp. " + shippingCost + " %0A%0A%2A" : ""}${"Total"}%3A%2A%20${total}%0A%0A`;
 

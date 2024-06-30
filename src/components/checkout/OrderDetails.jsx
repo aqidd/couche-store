@@ -9,7 +9,7 @@ function OrderDetails() {
   return (
     <Box w={["100%", "90%", "46%", "35%"]} height="max-content" p="4" mx="2">
       <Heading as="h3" size="md" textAlign="center">
-        Your Order
+        Pesanan Anda
       </Heading>
 
       <Flex direction="column" align="center" p="2" mt="4" overflowY="auto" w="100%" maxHeight="400px">
@@ -23,21 +23,28 @@ function OrderDetails() {
       <Flex direction="column" p="2" w="100%">
         <Flex w="100%" justify="space-between" mb="3">
           <Text>Sub Total</Text>
-          <Text>Rp. {subTotal}</Text>
+          <Text>Rp. {subTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}</Text>
         </Flex>
 
-        <Flex w="100%" justify="space-between" mb="3">
+        {/* TODO uncomment this for delivery */}
+        {/* <Flex w="100%" justify="space-between" mb="3">
           <Text>Delivery</Text>
           <Text>Rp. {withDelivery ? shippingCost : "0"}</Text>
-        </Flex>
+        </Flex> */}
 
         <Flex w="100%" justify="space-between" mb="3">
           <Text fontSize="lg" fontWeight="medium">
             Total
           </Text>
           <Text fontSize="lg" fontWeight="medium">
-            Rp. {total}
-          </Text>
+            Rp. {total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+          </Text>  
+        </Flex>
+
+        <Flex w="100%" justify="space-between" mb="3">
+          <div>
+            <iframe src={`http://rajaongkir.com/widget/frame?t=light&h=${typeof window !== 'undefined' ? window.location.host : ''}`} height="385px" style={{border:'0px'}} border="0" frameBorder="0"></iframe>
+          </div>
         </Flex>
       </Flex>
     </Box>

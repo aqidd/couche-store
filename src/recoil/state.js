@@ -42,9 +42,10 @@ export const withDelivery = atom({
   default: true,
 });
 
+// TODO set this for delivery fee
 export const deliveryFee = atom({
   key: "deliveryFee",
-  default: 5,
+  default: 0,
 });
 
 export const formState = atom({
@@ -111,10 +112,10 @@ export const orderDetails = selector({
 
     return {
       cartItems,
-      subTotal: subTotal.toFixed(2),
+      subTotal: subTotal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
       withDelivery: delivery,
-      shippingCost: shippingCost.toFixed(2),
-      total: total.toFixed(2),
+      shippingCost: shippingCost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
+      total: total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, "."),
       formData,
     };
   },
