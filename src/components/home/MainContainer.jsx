@@ -20,7 +20,8 @@ function MainContainer({ showSidebar }) {
 
       <Flex justify="space-between" align="center" w="100%" mt="8">
         <OBreadcrumb />
-        <Sort />
+        {/* TODO enable sorting */}
+        {/* <Sort /> */}
       </Flex>
 
       <ItemsGrid />

@@ -88,7 +88,7 @@ function CheckoutForm() {
                 <Input
                   type="text"
                   name="address"
-                  placeholder="Alamat"
+                  placeholder="Alamat & Kode Pos"
                   variant="filled"
                   ref={register(validations.address)}
                   isInvalid={errors.address ? true : false}
@@ -97,28 +97,6 @@ function CheckoutForm() {
               {errors.address && (
                 <Text as="i" fontSize="xs" color="red.500">
                   {errors.address.message}
-                </Text>
-              )}
-
-              <InputGroup mt="6">
-                <InputLeftElement children={<PseudoBox as={BiMapAlt} size="24px" color="bluex.400" />} />
-                <Select
-                  variant="filled"
-                  placeholder="-- Pilih Kota Pengiriman --"
-                  pl="40px"
-                  name="city"
-                  ref={register(validations.city)}
-                  isInvalid={errors.city ? true : false}
-                >
-                  <option value="option1">City 1</option>
-                  <option value="option2">City 2</option>
-                  <option value="option3">City 3</option>
-                  <option value="option4">City 4</option>
-                </Select>
-              </InputGroup>
-              {errors.city && (
-                <Text as="i" fontSize="xs" color="red.500">
-                  {errors.city.message}
                 </Text>
               )}
             </>

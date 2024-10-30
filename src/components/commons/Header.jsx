@@ -32,7 +32,7 @@ export default function Header({ page = "", showSidebar = false, setSidebar = fa
             )}
 
             {page === "home" ? (
-              <PseudoBox as="button" position="relative" onClick={() => setCart(true)}>
+              <PseudoBox as="button" position="relative" onClick={() => setCart(true)} bg="green.100" p={1} borderRadius="md">
                 <Box as={BiShoppingBag} size="38px" />
                 <Badge
                   color="white"

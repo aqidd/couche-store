@@ -7,7 +7,7 @@ function OrderDetails() {
   const { cartItems, subTotal, withDelivery, shippingCost, total } = useRecoilValue(orderDetails);
 
   return (
-    <Box w={["100%", "90%", "46%", "35%"]} height="max-content" p="4" mx="2">
+    <Box w={["100%", "90%", "50%", "40%"]} height="max-content" p="4" mx="2">
       <Heading as="h3" size="md" textAlign="center">
         Pesanan Anda
       </Heading>
@@ -42,9 +42,9 @@ function OrderDetails() {
         </Flex>
 
         <Flex w="100%" justify="space-between" mb="3">
-          <div>
-            <iframe src={`http://rajaongkir.com/widget/frame?t=light&h=${typeof window !== 'undefined' ? window.location.host : ''}`} height="385px" style={{border:'0px'}} border="0" frameBorder="0"></iframe>
-          </div>
+          <Text fontSize="lg" fontWeight="light">
+            *Harga belum termasuk ongkos kirim.
+          </Text>
         </Flex>
       </Flex>
     </Box>

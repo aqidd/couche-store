@@ -49,7 +49,7 @@ export const getFormValidations = () => {
     address: {
       required: {
         value: true,
-        message: "Alamat wajib diisi",
+        message: "Alamat & Kode Pos wajib diisi",
       },
       maxLength: {
         value: 40,
@@ -58,10 +58,6 @@ export const getFormValidations = () => {
       minLength: {
         value: 5,
         message: "Minimal 5 karakter",
-      },
-      pattern: {
-        value: /^[0-9a-zA-Z ]{5,20}$/,
-        message: "Alamat tidak valid",
       },
     },
     //city
@@ -86,7 +82,7 @@ export function getWspUrl(orderData) {
   const N = process.env.NEXT_PUBLIC_MY_PHONE_NUMBER;
   const ID = nanoid(8);
   const { cartItems, subTotal, withDelivery, shippingCost, total, formData } = orderData;
-  const { name, phone, address, city, schedule, comment } = formData;
+  const { name, phone, address, comment } = formData;
 
   let cartListforUrl = "";
 
@@ -99,11 +95,11 @@ export function getWspUrl(orderData) {
 
   const WSP_URL = `https://api.whatsapp.com/send/?phone=${N}&text=%2A${"Order"}%3A%2A%20${ID}%0A%0A%2A${"Client"}%3A%2A%20${name}%0A%0A%2A${"Phone"}%3A%2A%20${phone}%0A%0A%2A${
     withDelivery ? "Address" + "%3A%2A%20" + address + " %0A%0A%2A" : ""
-  }${withDelivery ? "City" + "%3A%2A%20" + city + "%0A%0A%2A" : ""}${
+  }${
     comment ? "Comment" + "%3A%2A%20" + comment + "%0A%0A%2A" : ""}
     ${"Items List"}%3A%2A${cartListforUrl}%0A%0A%2A${
     withDelivery ? "Sub Total" + "%3A%2A%20Rp. " + subTotal + " %0A%0A%2A" : ""
-  }${withDelivery ? "Delivery Fee" + "%3A%2A%20Rp. " + shippingCost + " %0A%0A%2A" : ""}${"Total"}%3A%2A%20${total}%0A%0A`;
+  }`;
 
   return WSP_URL;
 }

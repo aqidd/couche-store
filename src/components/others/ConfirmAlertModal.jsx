@@ -34,7 +34,7 @@ function ConfirmAlertModal({ showModal, setModal }) {
         <AlertDialogContent>
           <AlertDialogHeader>Confim Order?</AlertDialogHeader>
           <AlertDialogCloseButton />
-          <AlertDialogBody>You will be redirected to a whatsapp tab for send a message with order details</AlertDialogBody>
+          <AlertDialogBody>Order anda akan dikirimkan ke Whatsapp Couche Home (+62 852-8062-6393). Klinik untuk melanjutkan.</AlertDialogBody>
           <AlertDialogFooter>
             <Button variantColor="teal" ml={3} onClick={onConfirm}>
               Yes
