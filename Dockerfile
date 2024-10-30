@@ -5,9 +5,12 @@ COPY package*.json ./
 RUN npm install
 COPY . .
 
+ARG NEXT_PUBLIC_MY_PHONE_NUMBER="1234567890"
 ENV NODE_ENV=production
+ENV NEXT_PUBLIC_MY_PHONE_NUMBER=${NEXT_PUBLIC_MY_PHONE_NUMBER}
 
-RUN npm run build
+RUN echo "NEXT_PUBLIC_MY_PHONE_NUMBER is ${NEXT_PUBLIC_MY_PHONE_NUMBER}" && \
+    npm run build
 
 EXPOSE 3000
 CMD ["npm", "start"]
