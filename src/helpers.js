@@ -13,17 +13,13 @@ export const getFormValidations = () => {
         message: "Nama wajib diisi",
       },
       maxLength: {
-        value: 30,
-        message: "Maksimal 30 karakter",
+        value: 50,
+        message: "Maksimal 50 karakter",
       },
       minLength: {
-        value: 5,
-        message: "Minimal 5 karakter",
-      },
-      pattern: {
-        value: /^[A-Za-z ]{5,20}$/,
-        message: "Nama tidak valid",
-      },
+        value: 3,
+        message: "Minimal 3 karakter",
+      }
     },
 
     //phone
@@ -52,26 +48,19 @@ export const getFormValidations = () => {
         message: "Alamat & Kode Pos wajib diisi",
       },
       maxLength: {
-        value: 40,
-        message: "Maksimal 40 karakter",
+        value: 150,
+        message: "Maksimal 150 karakter",
       },
       minLength: {
         value: 5,
         message: "Minimal 5 karakter",
       },
     },
-    //city
-    city: {
-      required: {
-        value: true,
-        message: "Kota wajib dipilih",
-      },
-    },
     //extra comment
     comment: {
       maxLength: {
-        value: 25,
-        message: "Maksimal 25 karakter",
+        value: 100,
+        message: "Maksimal 100 karakter",
       },
     },
   };
@@ -81,7 +70,7 @@ export const getFormValidations = () => {
 export function getWspUrl(orderData) {
   const N = process.env.NEXT_PUBLIC_MY_PHONE_NUMBER;
   const ID = nanoid(8);
-  const { cartItems, subTotal, withDelivery, shippingCost, total, formData } = orderData;
+  const { cartItems, subTotal, withDelivery, formData } = orderData;
   const { name, phone, address, comment } = formData;
 
   let cartListforUrl = "";
@@ -89,7 +78,7 @@ export function getWspUrl(orderData) {
   {
     Object.values(cartItems).forEach((item) => {
       const itemTotal = (item.offerPrice ? item.offerPrice * item.qty : item.price * item.qty).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-      cartListforUrl += `%0A%0A - *(${item.qty})* ${item.title} --> _*$${itemTotal}*_`;
+      cartListforUrl += `%0A%0A - *(${item.qty})* ${item.title} --> _*Rp. ${itemTotal}*_`;
     });
   }
 
@@ -97,7 +86,7 @@ export function getWspUrl(orderData) {
     withDelivery ? "Address" + "%3A%2A%20" + address + " %0A%0A%2A" : ""
   }${
     comment ? "Comment" + "%3A%2A%20" + comment + "%0A%0A%2A" : ""}
-    ${"Items List"}%3A%2A${cartListforUrl}%0A%0A%2A${
+    %3A%2A${"Items List"}%3A%2A${cartListforUrl}%0A%0A%2A${
     withDelivery ? "Sub Total" + "%3A%2A%20Rp. " + subTotal + " %0A%0A%2A" : ""
   }`;
 
