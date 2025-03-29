@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!-- 2025-03-29: Initial layout implementation matching design screenshot with images from assets directory -->
+<html lang="id">  <!-- Set language to Indonesian -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoucheHome: Sprei Tencel & Katun Jepang Premium</title> <!-- Brand in title -->
+  <meta name="description" content="CoucheHome menawarkan sprei tencel lembut dan katun jepang berkualitas tinggi. Temukan sprei premium mewah, nyaman, dan tahan lama. Sprei terbaik untuk kamar tidur Anda!"> <!-- Indonesian Description -->
+  <meta name="keywords" content="CoucheHome, sprei tencel, katun jepang, sprei premium, sprei mewah, sprei nyaman, bed linen, sprei hotel, sprei katun, tencel, katun, sprei berkualitas, sprei tahan lama, kamar tidur"> <!-- Indonesian Keywords -->
+
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <style>
+    @font-face {
+      font-family: 'PP Hatton';
+      src: url('./font/PP Hatton Ultralight 200.otf') format('opentype');
+      font-weight: 200;
+      font-style: normal;
+      color: #2b335b;
+    }
+    
+    @font-face {
+      font-family: 'PP Hatton';
+      src: url('./font/PP Hatton Medium 500.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      color: #2b335b;
+    }
+    
+    @font-face {
+      font-family: 'PP Hatton';
+      src: url('./font/PP Hatton Bold 700.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+      color: #2b335b;
+    }
+    
+    body {
+      font-family: 'PP Hatton', sans-serif;
+      overflow-x: hidden;
+    }
+    
+    .italic-text {
+      font-style: italic;
+    }
+    
+    .font-montserrat {
+      font-family: 'Montserrat', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-white overflow-x-hidden">
+  <div id="app" class="relative">
+    <header class="h-screen relative text-center">
+      <img src="./assets/header.jpg" alt="CoucheHome - Sprei Premium" class="h-full w-full object-cover"> <!-- Local image -->
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl md:text-5xl font-bold text-blue-800 italic-text">
+        <h2 class="text-center font-montserrat">Affordable Elegance with<br>Natural Fabrics and Tailored Advice</h2>
+      </div>
+    </header>
+
+    <main class="py-8 mt-8">
+      <section class="materials mb-20 px-4 max-w-6xl mx-auto">
+        <!-- Cotton Section with Title on Left -->
+        <div class="mb-16">
+          <div class="flex flex-col md:flex-row items-center md:items-start mb-8">
+            <div class="material-title text-center mt-16 md:text-left md:w-1/4 mb-6 md:mb-0">
+              <h1 class="text-5xl font-bold text-gray-800">COTTON</h1>
+              <h2 class="text-3xl font-light text-gray-600">(KATUN)</h2>
+            </div>
+            
+            <div class="material-grid grid grid-cols-1 md:grid-cols-3 gap-6 md:w-3/4">
+              <div class="material-item relative">
+                <img src="./assets/cvc-local.jpg" alt="Sprei Katun CoucheHome" class="w-full h-64 object-cover"> <!-- Local image -->
+                <div class="absolute bottom-0 left-0 right-0 bg-white bg-opacity-80 p-3 text-left">
+                  <h3 class="text-xl font-medium text-gray-700 font-montserrat">CVC (Lokal)</h3>
+                  <p class="text-gray-500 text-sm font-montserrat">~60% katun, ~40% poliester</p>
+                  <p class="text-gray-500 text-sm font-montserrat">Pilihan paling terjangkau</p>
+                </div>
+              </div>
+              
+              <div class="material-item relative">
+                <img src="./assets/japanese-cotton.jpg" alt="Sprei Katun Jepang CoucheHome" class="w-full h-64 object-cover"> <!-- Local image -->
+                <div class="absolute bottom-0 left-0 right-0 bg-white bg-opacity-80 p-3 text-left">
+                  <h3 class="text-xl font-medium text-gray-700 font-montserrat">Japanese (Jepang)</h3>
+                  <p class="text-gray-500 text-sm font-montserrat">100% katun, 200 TC</p>
+                  <p class="text-gray-500 text-sm font-montserrat">Pilihan baik untuk kualitas & nilai</p>
+                </div>
+              </div>
+              
+              <div class="material-item relative">
+                <img src="./assets/40s-tencel.jpg" alt="Sprei Premium CoucheHome" class="w-full h-64 object-cover"> <!-- Local image -->
+                <div class="absolute bottom-0 left-0 right-0 bg-white bg-opacity-80 p-3 text-left">
+                  <h3 class="text-xl font-medium text-gray-700 font-montserrat">Egyptian (Mesir)</h3>
+                  <p class="text-gray-500 text-sm font-montserrat">100% katun, 650TC</p>
+                  <p class="text-gray-500 text-sm font-montserrat">Pilihan terbaik, seperti sprei hotel</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Lyocell Section with Title on Right -->
+        <div>
+          <div class="flex flex-col md:flex-row-reverse items-center md:items-start">
+            <div class="material-title text-center mt-16 md:text-right md:w-1/4 mb-6 md:mb-0">
+              <h1 class="text-5xl font-bold text-gray-800">LYOCELL</h1>
+              <h2 class="text-3xl font-light text-gray-600">(TENCEL)</h2>
+            </div>
+            
+            <div class="material-grid grid grid-cols-1 md:grid-cols-3 gap-6 md:w-3/4">
+              <div class="material-item relative">
+                <img src="./assets/40s-tencel.jpg" alt="Sprei Tencel CoucheHome" class="w-full h-64 object-cover"> <!-- Local image -->
+                <div class="absolute bottom-0 left-0 right-0 bg-white bg-opacity-80 p-3 text-left">
+                  <h3 class="text-xl font-medium text-gray-700 font-montserrat">40s</h3>
+                  <p class="text-gray-500 text-sm font-montserrat">100% lyocell, 40s yarn count</p>
+                  <p class="text-gray-500 text-sm font-montserrat">Dibuat di China</p>
+                </div>
+              </div>
+              
+              <div class="material-item relative">
+                <img src="./assets/40s-tencel.jpg" alt="Sprei Tencel Premium CoucheHome" class="w-full h-64 object-cover"> <!-- Local image -->
+                <div class="absolute bottom-0 left-0 right-0 bg-white bg-opacity-80 p-3 text-left">
+                  <h3 class="text-xl font-medium text-gray-700 font-montserrat">60s</h3>
+                  <p class="text-gray-500 text-sm font-montserrat">100% lyocell, 60s yarn count (finer)</p>
+                  <p class="text-gray-500 text-sm font-montserrat">Lebih nyaman, impor dari Eropa</p>
+                </div>
+              </div>
+              
+              <div class="material-item relative">
+                <img src="./assets/40s-tencel.jpg" alt="Sprei Lyocell Mewah CoucheHome" class="w-full h-64 object-cover"> <!-- Local image -->
+                <div class="absolute bottom-0 left-0 right-0 bg-white bg-opacity-80 p-3 text-left">
+                  <h3 class="text-xl font-medium text-gray-700 font-montserrat">100s</h3>
+                  <p class="text-gray-500 text-sm font-montserrat">100% lyocell, 100s yarn count</p>
+                  <p class="text-gray-500 text-sm font-montserrat">Paling nyaman, pilihan terbaik</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="text-center text-gray-500 my-12 font-montserrat">
+        <p>more massive production</p>
+      </div>
+
+      <section class="production-materials max-w-6xl mx-auto px-4 mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- Cotton Material -->  
+          <div class="material-showcase flex flex-col items-center">
+            <img src="./assets/cvc-local.jpg" alt="CoucheHome - Katun" class="w-48 h-48 rounded-full object-cover shadow-lg mb-6"> <!-- Local image -->
+            <div class="material-title text-center">
+              <h1 class="text-3xl font-bold text-gray-800">COTTON</h1>
+              <h2 class="text-xl font-light text-gray-600">(KATUN)</h2>
+            </div>
+          </div>
+          
+          <!-- Lyocell Material -->
+          <div class="material-showcase flex flex-col items-center">
+            <img src="./assets/lyocell.jpg" alt="CoucheHome - Lyocell" class="w-48 h-48 rounded-full object-cover shadow-lg mb-6"> <!-- Local image -->
+            <div class="material-title text-center">
+              <h1 class="text-3xl font-bold text-gray-800">LYOCELL</h1>
+              <h2 class="text-xl font-light text-gray-600">(TENCEL)</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {};
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
