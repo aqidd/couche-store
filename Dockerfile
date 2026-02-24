@@ -1,16 +1,16 @@
-FROM node:14-alpine
+FROM nginx:alpine
 
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
+WORKDIR /usr/share/nginx/html
 
-ARG NEXT_PUBLIC_MY_PHONE_NUMBER="1234567890"
-ENV NODE_ENV=production
-ENV NEXT_PUBLIC_MY_PHONE_NUMBER=${NEXT_PUBLIC_MY_PHONE_NUMBER}
+# Copy static HTML and assets
+COPY index.html .
+COPY *.webp .
+COPY *.jpeg .
+COPY *.png .
+COPY testimonial/ ./testimonial/
 
-RUN echo "NEXT_PUBLIC_MY_PHONE_NUMBER is ${NEXT_PUBLIC_MY_PHONE_NUMBER}" && \
-    npm run build
+# Expose port 80
+EXPOSE 80
 
-EXPOSE 3000
-CMD ["npm", "start"]
+# Start nginx in foreground mode
+CMD ["nginx", "-g", "daemon off;"]

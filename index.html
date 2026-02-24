@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="id" x-data="app()" x-cloak>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Couche Home – Sprei Premium Katun Jepang, Tencel & Egyptian Cotton Indonesia</title>
+  <meta name="description" content="Toko sprei premium online terpercaya. Koleksi lengkap Sprei Katun Lokal, Katun Jepang, Tencel 40s/60s/100s, dan Egyptian Cotton. Gratis ongkir untuk Jakarta. Pesan mudah via WhatsApp!" />
+  <meta name="keywords" content="sprei premium, sprei katun jepang, sprei tencel, sprei egyptian cotton, couche home, toko sprei online, sprei berkualitas, sprei murah, beli sprei online, sprei bed sheet" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="Couche Home" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Couche Home" />
+  <meta property="og:title" content="Couche Home – Sprei Premium Katun Jepang, Tencel & Egyptian Cotton" />
+  <meta property="og:description" content="Toko sprei premium online. Katun Lokal mulai Rp 160rb, Katun Jepang mulai Rp 215rb, Tencel mulai Rp 260rb, Egyptian Cotton mulai Rp 430rb. Gratis ongkir untuk Jakarta." />
+  <meta property="og:locale" content="id_ID" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Couche Home – Sprei Premium Berbagai Bahan" />
+  <meta name="twitter:description" content="Sprei Katun Jepang, Tencel 40s/60s/100s, Egyptian Cotton premium. Order via WhatsApp sekarang!" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary:  '#B8860B',
+            secondary:'#1a1a2e',
+            accent:   '#C9A96E',
+            cream:    '#FAF6F0',
+            softgold: '#F5ECD7',
+            dark:     '#222222',
+          },
+          fontFamily: {
+            sans:  ['Inter','sans-serif'],
+            serif: ['Playfair Display','serif'],
+          },
+        },
+      },
+    }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "Couche Home",
+    "description": "Toko sprei premium online. Tersedia Sprei Katun Lokal, Katun Jepang, Tencel 40s/60s/100s, Egyptian Cotton. Gratis ongkir untuk Jakarta",
+    "url": "https://couchehome.id",
+    "logo": "https://couchehome.id/logo.png",
+    "contactPoint": { "@type": "ContactPoint", "contactType": "customer service", "availableLanguage": "Indonesian" },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Koleksi Sprei Couche Home",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Sprei Katun Lokal", "description": "Sprei katun lokal premium mulai Rp 160.000" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Sprei Katun Jepang", "description": "Sprei katun Jepang halus mulai Rp 215.000" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Sprei Tencel 40s/60s", "description": "Sprei Tencel eco-friendly mulai Rp 260.000" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Sprei Tencel 100s", "description": "Sprei Tencel ultra premium mulai Rp 450.000" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Sprei Egyptian Cotton", "description": "Sprei Egyptian Cotton mewah mulai Rp 430.000" } }
+      ]
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    [x-cloak] { display: none !important; }
+    html { scroll-behavior: smooth; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #f1f1f1; }
+    ::-webkit-scrollbar-thumb { background: #B8860B; border-radius: 3px; }
+
+    .hero-swiper .swiper-pagination-bullet { background:#fff; opacity:.5; width:10px; height:10px; }
+    .hero-swiper .swiper-pagination-bullet-active { opacity:1; width:28px; border-radius:5px; }
+
+    .cat-card { transition: all .25s ease; }
+    .cat-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+
+    .fabric-card { transition: box-shadow .25s ease; }
+    .fabric-card:hover { box-shadow: 0 16px 40px rgba(0,0,0,.08); }
+
+    @keyframes marquee { 0%{transform:translateX(0)} 100%{transform:translateX(-50%)} }
+    .marquee-track { animation: marquee 30s linear infinite; }
+
+    .wa-float { animation: waFloat 3s ease-in-out infinite; }
+    @keyframes waFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+
+    /* Fabric gallery */
+    .gallery-thumb { transition: opacity .2s, transform .2s; }
+    .gallery-thumb:hover { opacity: 1 !important; transform: scale(1.05); }
+    .gallery-thumb.active { outline: 2px solid white; outline-offset: 1px; opacity: 1 !important; }
+
+    /* Selectable chips */
+    .chip-btn { transition: all .15s ease; cursor: pointer; }
+    .chip-btn:hover { border-color: #B8860B; color: #B8860B; }
+    .chip-btn.selected { background: #222; color: #fff; border-color: #222; }
+    .chip-btn.selected-size { background: #B8860B; color: #fff; border-color: #B8860B; }
+
+  /* Lightbox */
+  .lightbox-enter { animation: lbIn .2s ease; }
+  @keyframes lbIn { from { opacity:0; transform:scale(.95); } to { opacity:1; transform:scale(1); } }
+  </style>
+</head>
+
+<body class="font-sans bg-cream text-dark antialiased" @keydown.escape="mobileMenuOpen=false; lightboxImg=null">
+
+<!-- ─── TOP BAR ─── -->
+<div class="bg-secondary text-white text-xs overflow-hidden">
+  <div class="flex whitespace-nowrap marquee-track py-2">
+    <span class="mx-8">✨ Gratis ongkir untuk Jakarta</span>
+    <span class="mx-8">🏠 Sprei premium berbagai bahan pilihan</span>
+    <span class="mx-8">🚚 Pengiriman ke seluruh Indonesia</span>
+    <span class="mx-8">💯 Garansi kualitas 100%</span>
+    <span class="mx-8">📞 Order via WhatsApp</span>
+    <span class="mx-8">✨ Gratis ongkir untuk Jakarta</span>
+    <span class="mx-8">🏠 Sprei premium berbagai bahan pilihan</span>
+    <span class="mx-8">🚚 Pengiriman ke seluruh Indonesia</span>
+    <span class="mx-8">💯 Garansi kualitas 100%</span>
+    <span class="mx-8">📞 Order via WhatsApp</span>
+  </div>
+</div>
+
+<!-- ─── NAVBAR ─── -->
+<header class="sticky top-0 z-50 bg-white backdrop-blur-md shadow-sm border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center">
+        <img src="logo.png" alt="Couche Home" class="h-10 object-contain" />
+      </a>
+
+      <!-- Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
+        <a href="#beranda" class="hover:text-primary transition-colors">Beranda</a>
+        <a href="#kategori" class="hover:text-primary transition-colors">Kategori</a>
+        <a href="#produk" class="hover:text-primary transition-colors">Koleksi</a>
+        <a href="#tentang" class="hover:text-primary transition-colors">Tentang</a>
+        <a href="#kontak" class="hover:text-primary transition-colors">Kontak</a>
+      </nav>
+
+      <!-- Right -->
+      <div class="flex items-center gap-2">
+        <a href="https://wa.me/6285280626393" target="_blank"
+           class="hidden sm:flex items-center gap-2 bg-primary text-white text-xs font-semibold px-4 py-2 rounded-full hover:bg-amber-700 transition-colors">
+          <i class="fab fa-whatsapp"></i> Order
+        </a>
+        <button @click="mobileMenuOpen = !mobileMenuOpen"
+                class="md:hidden w-9 h-9 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-500">
+          <i class="fas" :class="mobileMenuOpen ? 'fa-times' : 'fa-bars'"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div x-show="mobileMenuOpen" x-transition class="md:hidden border-t py-3 flex flex-col gap-3 text-sm font-medium text-gray-600">
+      <a href="#beranda" @click="mobileMenuOpen=false">Beranda</a>
+      <a href="#kategori" @click="mobileMenuOpen=false">Kategori</a>
+      <a href="#produk" @click="mobileMenuOpen=false">Koleksi</a>
+      <a href="#tentang" @click="mobileMenuOpen=false">Tentang</a>
+      <a href="#kontak" @click="mobileMenuOpen=false">Kontak</a>
+    </div>
+  </div>
+</header>
+
+<!-- ─── HERO ─── -->
+<section id="beranda">
+  <div class="swiper hero-swiper">
+    <div class="swiper-wrapper">
+
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="relative h-[440px] sm:h-[520px] bg-gradient-to-br from-[#2c2118] to-[#1a1a2e] flex items-center overflow-hidden">
+          <div class="absolute inset-0 opacity-30" style="background-image:url('https://lh3.googleusercontent.com/d/14YMUsnXJ3DhmOGz_DZvoQaAmmJELXxAG');background-size:cover;background-position:center;"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+          <div class="relative max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-xl">
+              <span class="inline-flex items-center gap-1.5 bg-primary/90 text-white text-[11px] font-semibold px-3 py-1 rounded-full mb-5 uppercase tracking-wider"><i class="fas fa-star text-[9px]"></i> Premium Collection</span>
+              <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.1] mb-4">Sprei Premium<br/>Berbagai Bahan</h1>
+              <p class="text-white/70 text-sm sm:text-base mb-8 max-w-md leading-relaxed">Katun Lokal, Katun Jepang, Katun Mesir, Tencel 40s, 60s, dan 100s — pilihan terbaik untuk tidur berkualitas.</p>
+              <div class="flex gap-3">
+                <a href="#produk" class="bg-primary text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-amber-700 transition-colors">Lihat Koleksi</a>
+                <a href="https://wa.me/6285280626393" target="_blank" class="bg-white/10 backdrop-blur text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-white/20 transition-colors border border-white/20"><i class="fab fa-whatsapp mr-1.5"></i> Konsultasi</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="relative h-[440px] sm:h-[520px] bg-gradient-to-br from-[#1a3535] to-[#0a1628] flex items-center overflow-hidden">
+          <div class="absolute inset-0 opacity-30" style="background-image:url('https://lh3.googleusercontent.com/d/101u9T__TCz_lsIndZ6B2BGX4wNjONalm');background-size:cover;background-position:center;"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+          <div class="relative max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-xl">
+              <span class="inline-flex items-center gap-1.5 bg-teal-600/90 text-white text-[11px] font-semibold px-3 py-1 rounded-full mb-5 uppercase tracking-wider"><i class="fas fa-leaf text-[9px]"></i> Eco-Friendly</span>
+              <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.1] mb-4">Tencel Collection<br/>Anti Panas</h1>
+              <p class="text-white/70 text-sm sm:text-base mb-8 max-w-md leading-relaxed">Bahan Tencel dari serat kayu eucalyptus — menyerap kelembapan, anti-bakteri, cocok untuk iklim tropis.</p>
+              <div class="flex gap-3">
+                <a href="#produk" class="bg-teal-600 text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-teal-700 transition-colors">Lihat Tencel</a>
+                <a href="#kategori" class="bg-white/10 backdrop-blur text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-white/20 transition-colors border border-white/20">Semua Bahan</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <div class="relative h-[440px] sm:h-[520px] bg-gradient-to-br from-[#2a1a28] to-[#1a0a1e] flex items-center overflow-hidden">
+          <div class="absolute inset-0 opacity-25" style="background-image:url('https://lh3.googleusercontent.com/d/121TQl5pF5S2iAQsbvCWP_qS8rkaEA3t2');background-size:cover;background-position:center;"></div>
+          <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
+          <div class="relative max-w-7xl mx-auto px-6 w-full">
+            <div class="max-w-xl">
+              <span class="inline-flex items-center gap-1.5 bg-rose-500/90 text-white text-[11px] font-semibold px-3 py-1 rounded-full mb-5 uppercase tracking-wider"><i class="fas fa-crown text-[9px]"></i> Best Seller</span>
+              <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.1] mb-4">Egyptian Cotton<br/>Super Premium</h1>
+              <p class="text-white/70 text-sm sm:text-base mb-8 max-w-md leading-relaxed">Katun Mesir dengan kualitas hotel bintang 5 — lembut, bernapas, dan tahan lama.</p>
+              <div class="flex gap-3">
+                <a href="#produk" class="bg-rose-500 text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-rose-600 transition-colors">Shop Now</a>
+                <a href="#tentang" class="bg-white/10 backdrop-blur text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-white/20 transition-colors border border-white/20">Tentang Kami</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="swiper-pagination !bottom-5"></div>
+  </div>
+</section>
+
+<!-- ─── BANNER 2 ─── -->
+<section class="m-0 p-0 leading-none">
+  <img src="banner2.jpeg" alt="Couche Home – Koleksi Sprei Premium"
+       class="w-full block" loading="lazy" />
+</section>
+
+<!-- ─── PRODUCT BANNER ─── -->
+<section class="bg-cream pt-10 pb-2">
+  <div class="max-w-5xl mx-auto px-6">
+    <img src="banner.webp" alt="Couché — Sprei Set, Sarung Bantal & Guling, Bed Cover & Quilt, Keset Estetik, Semua Bisa Custom"
+         class="w-full rounded-2xl shadow-lg" loading="lazy" />
+  </div>
+</section>
+
+<!-- ─── CATEGORIES ─── -->
+<section id="kategori" class="py-14 bg-cream">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-10">
+      <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dark">Pilih Bahan Sprei</h2>
+      <p class="text-gray-400 text-sm mt-2">6 jenis bahan premium untuk kenyamanan tidur Anda</p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+      <template x-for="cat in categories" :key="cat.id">
+        <a href="#" @click.prevent="scrollToFabric(cat.fabricId)"
+           class="cat-card bg-white rounded-2xl overflow-hidden border-2 border-transparent text-center flex flex-col cursor-pointer">
+          <div class="aspect-[4/3] overflow-hidden bg-gray-50">
+            <img :src="cat.img" :alt="cat.name" class="w-full h-full object-cover" loading="lazy"
+                 onerror="this.src='https://placehold.co/400x300/F5ECD7/B8860B?text='+encodeURIComponent(this.alt)" />
+          </div>
+          <div class="p-3 flex-1 flex flex-col justify-center">
+            <div class="font-semibold text-xs sm:text-sm text-dark leading-tight" x-text="cat.name"></div>
+            <div class="text-[10px] text-gray-400 mt-0.5" x-text="cat.tagline"></div>
+          </div>
+        </a>
+      </template>
+    </div>
+  </div>
+</section>
+
+<!-- ─── KOLEKSI & PANDUAN BAHAN ─── -->
+<section id="produk" class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-12">
+      <span class="text-primary text-xs font-semibold uppercase tracking-widest">Koleksi Produk</span>
+      <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dark mt-2">Panduan & Pilihan Bahan</h2>
+      <p class="text-gray-400 text-sm mt-2 max-w-xl mx-auto">Setiap bahan memiliki keunggulan berbeda. Temukan yang paling sesuai dengan kebutuhan dan budget Anda.</p>
+    </div>
+
+    <div class="space-y-10">
+      <template x-for="(fab, idx) in fabrics" :key="fab.id">
+        <div :id="'fabric-' + fab.id" class="fabric-card bg-cream rounded-2xl overflow-hidden border border-gray-100">
+          <div class="grid md:grid-cols-2">
+
+            <!-- Image Gallery -->
+            <div class="relative min-h-[280px] md:min-h-[360px] overflow-hidden bg-gray-100 flex flex-col"
+                 :class="idx % 2 !== 0 ? 'md:order-2' : ''">
+              <!-- Main image -->
+              <div class="flex-1 relative">
+                <img :src="fab.imgs[fab.activeImg || 0]"
+                     :alt="fab.name"
+                     class="w-full h-full object-cover absolute inset-0 transition-opacity duration-300"
+                     loading="lazy"
+                     onerror="this.src='https://placehold.co/600x400/F5ECD7/B8860B?text=Couche+Home'" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
+                <span class="absolute top-4 left-4 text-[11px] font-bold px-3 py-1.5 rounded-full text-white shadow"
+                      :style="`background:${fab.color}`" x-text="fab.badge"></span>
+                <!-- Arrow nav -->
+                <button x-show="fab.imgs.length > 1"
+                        @click="fab.activeImg = (fab.activeImg - 1 + fab.imgs.length) % fab.imgs.length"
+                        class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors text-xs">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button x-show="fab.imgs.length > 1"
+                        @click="fab.activeImg = (fab.activeImg + 1) % fab.imgs.length"
+                        class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-black/40 hover:bg-black/70 text-white rounded-full flex items-center justify-center transition-colors text-xs">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <!-- Counter -->
+                <span x-show="fab.imgs.length > 1"
+                      class="absolute bottom-14 right-3 text-[10px] text-white/80 bg-black/40 px-2 py-0.5 rounded-full"
+                      x-text="(fab.activeImg + 1) + ' / ' + fab.imgs.length"></span>
+              </div>
+              <!-- Thumbnails -->
+              <div x-show="fab.imgs.length > 1" class="flex gap-1.5 p-2 bg-black/60 overflow-x-auto">
+                <template x-for="(img, imgIdx) in fab.imgs" :key="imgIdx">
+                  <button @click="fab.activeImg = imgIdx"
+                          class="gallery-thumb flex-shrink-0 w-12 h-12 rounded overflow-hidden border border-transparent"
+                          :class="(fab.activeImg || 0) === imgIdx ? 'active' : 'opacity-60'">
+                    <img :src="img" class="w-full h-full object-cover" loading="lazy" />
+                  </button>
+                </template>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-7 sm:p-9 flex flex-col justify-center"
+                 :class="idx % 2 !== 0 ? 'md:order-1' : ''">
+
+              <!-- Header -->
+              <div class="flex items-center gap-2 mb-2">
+                <div class="w-3 h-3 rounded-full flex-shrink-0" :style="`background:${fab.color}`"></div>
+                <span class="text-xs font-semibold uppercase tracking-widest text-gray-400" x-text="fab.tagline"></span>
+              </div>
+              <h3 class="font-serif font-bold text-xl sm:text-2xl text-dark mb-2" x-text="fab.name"></h3>
+              <p class="text-sm text-gray-500 leading-relaxed mb-5" x-text="fab.desc"></p>
+
+              <!-- Benefits -->
+              <ul class="space-y-2 mb-5">
+                <template x-for="b in fab.benefits" :key="b">
+                  <li class="flex items-start gap-2 text-sm text-gray-700">
+                    <i class="fas fa-check-circle mt-0.5 flex-shrink-0 text-sm" :style="`color:${fab.color}`"></i>
+                    <span x-text="b"></span>
+                  </li>
+                </template>
+              </ul>
+
+              <!-- Variants -->
+              <div class="mb-4">
+                <span class="text-[11px] font-semibold text-gray-400 uppercase tracking-wider block mb-2">Tersedia dalam <span x-show="fab.selectedVariant" class="text-dark">— <span x-text="fab.selectedVariant"></span></span></span>
+                <div class="flex flex-wrap gap-1.5">
+                  <template x-for="v in fab.variants" :key="v">
+                    <button @click="fab.selectedVariant = (fab.selectedVariant === v ? null : v)"
+                            class="chip-btn text-xs bg-white border border-gray-300 text-gray-700 px-3 py-1 rounded-full font-medium"
+                            :class="fab.selectedVariant === v ? 'selected' : ''"
+                            x-text="v"></button>
+                  </template>
+                </div>
+              </div>
+
+              <!-- Sizes -->
+              <div class="mb-5">
+                <span class="text-[11px] font-semibold text-gray-400 uppercase tracking-wider block mb-2">Pilih ukuran <span x-show="fab.selectedSize" class="text-dark">— <span x-text="fab.selectedSize"></span></span></span>
+                <div class="flex flex-wrap gap-1.5">
+                  <template x-for="s in fab.sizes" :key="s">
+                    <button @click="fab.selectedSize = (fab.selectedSize === s ? null : s)"
+                            class="chip-btn text-[11px] bg-white border border-gray-300 text-gray-600 px-2.5 py-1 rounded-lg font-medium tabular-nums"
+                            :class="fab.selectedSize === s ? 'selected-size' : ''"
+                            x-text="s"></button>
+                  </template>
+                </div>
+              </div>
+
+              <!-- Selection hint -->
+              <div x-show="!fab.selectedVariant || !fab.selectedSize"
+                   class="text-[11px] text-amber-600 bg-amber-50 border border-amber-100 rounded-lg px-3 py-2 mb-4 flex items-center gap-1.5">
+                <i class="fas fa-hand-pointer text-[10px]"></i>
+                <span>Pilih <span x-show="!fab.selectedVariant">pilihan</span><span x-show="!fab.selectedVariant && !fab.selectedSize"> &amp; </span><span x-show="!fab.selectedSize">ukuran</span> untuk order via WA</span>
+              </div>
+
+              <!-- Price + CTA -->
+              <div class="flex items-center justify-between pt-5 border-t border-gray-200">
+                <div>
+                  <div class="text-[10px] text-gray-400 uppercase tracking-wider mb-0.5">Estimasi harga</div>
+                  <div class="font-bold text-xl text-dark" x-text="fab.priceEstimate"></div>
+                </div>
+                <a :href="waFabricLink(fab)"
+                   target="_blank"
+                   class="flex items-center gap-2 text-white font-semibold text-sm px-5 py-3 rounded-xl transition-colors shadow-sm"
+                   :class="fab.selectedVariant && fab.selectedSize ? 'bg-green-600 hover:bg-green-700' : 'bg-gray-400 hover:bg-gray-500'">
+                  <i class="fab fa-whatsapp text-base"></i>
+                  <span x-text="fab.selectedVariant && fab.selectedSize ? 'Order via WA' : 'Tanya &amp; Info'"></span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TENTANG & KATA PELANGGAN ─── -->
+<section id="tentang" class="py-16 bg-cream">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- About -->
+    <div class="grid md:grid-cols-2 gap-10 items-center mb-16">
+      <div>
+        <span class="text-primary text-xs font-semibold uppercase tracking-widest">Tentang Couche Home</span>
+        <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dark mt-2 mb-4">Kenyamanan Tidur Dimulai dari Pilihan Bahan</h2>
+        <p class="text-gray-500 text-sm leading-relaxed mb-4">Couche Home hadir untuk memberikan solusi perlengkapan tidur premium dengan harga terjangkau. Kami menyediakan sprei dari berbagai bahan pilihan — mulai dari Katun Lokal yang ekonomis, Katun Jepang yang halus, hingga Tencel dan Egyptian Cotton yang mewah.</p>
+        <p class="text-gray-500 text-sm leading-relaxed mb-6">Setiap produk dibuat dengan standar kualitas tinggi: jahitan rapi, warna tahan cuci, dan bahan yang sudah terseleksi untuk memastikan tidur Anda nyaman setiap malam.</p>
+
+        <div class="grid grid-cols-2 gap-3 mb-6">
+          <div class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-primary text-sm mt-0.5"></i>
+            <span class="text-sm text-gray-600">6 jenis bahan premium</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-primary text-sm mt-0.5"></i>
+            <span class="text-sm text-gray-600">Jahitan kuat &amp; rapi</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-primary text-sm mt-0.5"></i>
+            <span class="text-sm text-gray-600">Warna tidak luntur</span>
+          </div>
+          <div class="flex items-start gap-2">
+            <i class="fas fa-check-circle text-primary text-sm mt-0.5"></i>
+            <span class="text-sm text-gray-600">Pengiriman cepat</span>
+          </div>
+        </div>
+
+        <a href="https://wa.me/6285280626393" target="_blank"
+           class="inline-flex items-center gap-2 bg-primary text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-amber-700 transition-colors">
+          <i class="fab fa-whatsapp"></i> Konsultasi Gratis
+        </a>
+      </div>
+
+      <div class="grid grid-cols-2 gap-3">
+        <div class="rounded-2xl overflow-hidden shadow-lg">
+          <img src="https://lh3.googleusercontent.com/d/1RjruZu9UYoBgZDgM6TEnKskPaO8qPC6n" alt="Couche Home" class="w-full h-48 sm:h-56 object-cover" loading="lazy" />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg mt-6">
+          <img src="https://lh3.googleusercontent.com/d/14YMUsnXJ3DhmOGz_DZvoQaAmmJELXxAG" alt="Couche Home" class="w-full h-48 sm:h-56 object-cover" loading="lazy" />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg -mt-4">
+          <img src="https://lh3.googleusercontent.com/d/108zjyFeDKqEDuF8z_DMPDjrrYP6qaQ2N" alt="Couche Home" class="w-full h-48 sm:h-56 object-cover" loading="lazy" />
+        </div>
+        <div class="rounded-2xl overflow-hidden shadow-lg mt-2">
+          <img src="https://lh3.googleusercontent.com/d/121TQl5pF5S2iAQsbvCWP_qS8rkaEA3t2" alt="Couche Home" class="w-full h-48 sm:h-56 object-cover" loading="lazy" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-t border-gray-200 mb-12" id="testimonial"></div>
+
+    <!-- Testimonials -->
+    <div class="text-center mb-8">
+      <h2 class="font-serif text-2xl font-bold text-dark">Kata Pelanggan</h2>
+      <p class="text-gray-400 text-sm mt-1">Ribuan pelanggan puas dengan kualitas Couche Home</p>
+    </div>
+
+    <div class="swiper testimonial-swiper">
+      <div class="swiper-wrapper pb-10">
+        <div class="swiper-slide">
+          <div class="bg-white rounded-2xl shadow-sm overflow-hidden flex items-center justify-center h-72 cursor-pointer hover:shadow-md transition-shadow"
+               @click="lightboxImg='testimonial/Screenshot 2026-02-24 at 09.17.08.png'">
+            <img src="testimonial/Screenshot 2026-02-24 at 09.17.08.png" alt="Review pelanggan Couche Home" class="max-h-full max-w-full object-contain" loading="lazy" />
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="bg-white rounded-2xl shadow-sm overflow-hidden flex items-center justify-center h-72 cursor-pointer hover:shadow-md transition-shadow"
+               @click="lightboxImg='testimonial/Screenshot 2026-02-24 at 09.17.21.png'">
+            <img src="testimonial/Screenshot 2026-02-24 at 09.17.21.png" alt="Review pelanggan Couche Home" class="max-h-full max-w-full object-contain" loading="lazy" />
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="bg-white rounded-2xl shadow-sm overflow-hidden flex items-center justify-center h-72 cursor-pointer hover:shadow-md transition-shadow"
+               @click="lightboxImg='testimonial/Screenshot 2026-02-24 at 09.17.32.png'">
+            <img src="testimonial/Screenshot 2026-02-24 at 09.17.32.png" alt="Review pelanggan Couche Home" class="max-h-full max-w-full object-contain" loading="lazy" />
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="bg-white rounded-2xl shadow-sm overflow-hidden flex items-center justify-center h-72 cursor-pointer hover:shadow-md transition-shadow"
+               @click="lightboxImg='testimonial/Screenshot 2026-02-24 at 09.17.49.png'">
+            <img src="testimonial/Screenshot 2026-02-24 at 09.17.49.png" alt="Review pelanggan Couche Home" class="max-h-full max-w-full object-contain" loading="lazy" />
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="bg-white rounded-2xl shadow-sm overflow-hidden flex items-center justify-center h-72 cursor-pointer hover:shadow-md transition-shadow"
+               @click="lightboxImg='testimonial/Screenshot 2026-02-24 at 09.18.14.png'">
+            <img src="testimonial/Screenshot 2026-02-24 at 09.18.14.png" alt="Review pelanggan Couche Home" class="max-h-full max-w-full object-contain" loading="lazy" />
+          </div>
+        </div>
+        <div class="swiper-slide">
+          <div class="bg-white rounded-2xl shadow-sm overflow-hidden flex items-center justify-center h-72 cursor-pointer hover:shadow-md transition-shadow"
+               @click="lightboxImg='testimonial/Screenshot 2026-02-24 at 09.18.29.png'">
+            <img src="testimonial/Screenshot 2026-02-24 at 09.18.29.png" alt="Review pelanggan Couche Home" class="max-h-full max-w-full object-contain" loading="lazy" />
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── CTA / NEWSLETTER ─── -->
+<!-- <section class="py-14 bg-secondary text-white">
+  <div class="max-w-2xl mx-auto px-6 text-center">
+    <h2 class="font-serif text-2xl sm:text-3xl font-bold mb-3">Dapatkan Promo Eksklusif</h2>
+    <p class="text-white/60 text-sm mb-6">Daftar dan dapatkan diskon 10% untuk pembelian pertama Anda</p>
+    <form @submit.prevent="subscribeNewsletter()" class="flex gap-2 max-w-md mx-auto">
+      <input type="email" x-model="newsletterEmail" placeholder="Email kamu…"
+             class="flex-1 rounded-lg px-4 py-3 text-dark text-sm focus:outline-none" />
+      <button type="submit"
+              class="bg-primary text-white font-semibold px-5 py-3 rounded-lg hover:bg-amber-700 transition-colors text-sm whitespace-nowrap">
+        Daftar
+      </button>
+    </form>
+    <p x-show="newsletterMsg" x-transition class="mt-3 text-xs text-accent" x-text="newsletterMsg"></p>
+  </div>
+</section> -->
+
+<!-- ─── CONTACT ─── -->
+<section id="kontak" class="py-14 bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-10">
+      <h2 class="font-serif text-2xl sm:text-3xl font-bold text-dark">Hubungi Kami</h2>
+      <p class="text-gray-400 text-sm mt-2">Siap membantu kebutuhan sprei Anda</p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+      <a href="https://wa.me/6285280626393" target="_blank"
+         class="flex items-center gap-3 p-5 rounded-xl border border-gray-100 hover:border-green-300 hover:shadow-md transition-all group">
+        <div class="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center group-hover:bg-green-100 transition-colors">
+          <i class="fab fa-whatsapp text-green-600 text-lg"></i>
+        </div>
+        <div>
+          <div class="font-semibold text-sm">WhatsApp</div>
+          <div class="text-xs text-gray-400">0821-1234-5678</div>
+        </div>
+      </a>
+      <a href="https://instagram.com/couchehome" target="_blank"
+         class="flex items-center gap-3 p-5 rounded-xl border border-gray-100 hover:border-pink-300 hover:shadow-md transition-all group">
+        <div class="w-10 h-10 bg-pink-50 rounded-lg flex items-center justify-center group-hover:bg-pink-100 transition-colors">
+          <i class="fab fa-instagram text-pink-600 text-lg"></i>
+        </div>
+        <div>
+          <div class="font-semibold text-sm">Instagram</div>
+          <div class="text-xs text-gray-400">@couchehome</div>
+        </div>
+      </a>
+      <a href="https://shopee.co.id/couchehome" target="_blank"
+         class="flex items-center gap-3 p-5 rounded-xl border border-gray-100 hover:border-orange-300 hover:shadow-md transition-all group">
+        <div class="w-10 h-10 bg-orange-50 rounded-lg flex items-center justify-center group-hover:bg-orange-100 transition-colors">
+          <i class="fas fa-store text-orange-500 text-lg"></i>
+        </div>
+        <div>
+          <div class="font-semibold text-sm">Shopee</div>
+          <div class="text-xs text-gray-400">Couche Home Official</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="bg-dark text-white pt-12 pb-6">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-10">
+      <div class="col-span-2 md:col-span-1">
+        <div class="flex flex-col leading-none mb-4">
+          <span class="font-serif font-bold text-xl tracking-tight">COUCHE</span>
+          <span class="text-[9px] tracking-[.35em] text-primary font-semibold uppercase -mt-0.5">HOME</span>
+        </div>
+        <p class="text-gray-400 text-xs leading-relaxed mb-4">Sprei premium berbagai bahan pilihan untuk tidur yang lebih nyaman dan berkualitas.</p>
+        <div class="flex gap-2">
+          <a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-primary transition-colors text-xs"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-green-600 transition-colors text-xs"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors text-xs"><i class="fas fa-store"></i></a>
+          <a href="#" class="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-blue-600 transition-colors text-xs"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="font-semibold text-xs uppercase tracking-widest text-gray-300 mb-4">Bahan</h4>
+        <ul class="space-y-2 text-xs text-gray-400">
+          <li><a href="#produk" class="hover:text-white transition-colors">Katun Lokal</a></li>
+          <li><a href="#produk" class="hover:text-white transition-colors">Katun Jepang</a></li>
+          <li><a href="#produk" class="hover:text-white transition-colors">Tencel</a></li>
+          <li><a href="#produk" class="hover:text-white transition-colors">Egyptian Cotton</a></li>
+          <li><a href="#produk" class="hover:text-white transition-colors">Tencel 100s</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-xs uppercase tracking-widest text-gray-300 mb-4">Info</h4>
+        <ul class="space-y-2 text-xs text-gray-400">
+          <li><a href="#tentang" class="hover:text-white transition-colors">Tentang Kami</a></li>
+          <li><a href="#testimonial" class="hover:text-white transition-colors">Testimonial</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold text-xs uppercase tracking-widest text-gray-300 mb-4">Marketplace</h4>
+        <ul class="space-y-2 text-xs text-gray-400">
+          <li><a href="#" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fas fa-store text-orange-400"></i> Shopee</a></li>
+          <li><a href="#" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fas fa-store text-green-400"></i> Tokopedia</a></li>
+          <li><a href="#" class="hover:text-white transition-colors flex items-center gap-1.5"><i class="fas fa-store text-blue-400"></i> Lazada</a></li>
+        </ul>
+        <div class="mt-4">
+          <div class="text-[10px] text-gray-500 uppercase tracking-widest mb-1.5">Pembayaran</div>
+          <div class="flex gap-1.5 text-base text-gray-400">
+            <i class="fab fa-cc-visa"></i>
+            <i class="fab fa-cc-mastercard"></i>
+            <i class="fas fa-money-bill"></i>
+            <i class="fas fa-wallet"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-white/10 pt-5 text-center text-[11px] text-gray-500">
+      &copy; 2026 Couche Home. Semua hak dilindungi.
+    </div>
+  </div>
+</footer>
+
+<!-- ─── LIGHTBOX ─── -->
+<div x-show="lightboxImg" x-transition.opacity
+     style="display:none"
+     class="fixed inset-0 z-[60] bg-black/90 flex items-center justify-center p-4"
+     @click.self="lightboxImg=null">
+  <button @click="lightboxImg=null"
+          class="absolute top-4 right-4 w-10 h-10 bg-white/10 hover:bg-white/25 text-white rounded-full flex items-center justify-center transition-colors">
+    <i class="fas fa-times text-sm"></i>
+  </button>
+  <img :src="lightboxImg" alt="Review pelanggan Couche Home"
+       class="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl lightbox-enter" />
+</div>
+
+<!-- ─── FLOATING WA ─── -->
+<a href="https://wa.me/6285280626393" target="_blank"
+   class="fixed bottom-5 left-5 z-40 w-12 h-12 bg-green-500 text-white rounded-full shadow-lg flex items-center justify-center hover:bg-green-600 transition-colors wa-float">
+  <i class="fab fa-whatsapp text-xl"></i>
+</a>
+
+<!-- ─── BACK TO TOP ─── -->
+<button @click="window.scrollTo({top:0,behavior:'smooth'})"
+        x-show="scrollY > 400" x-transition
+        class="fixed bottom-5 right-5 z-40 w-10 h-10 bg-dark/80 text-white rounded-full shadow flex items-center justify-center hover:bg-dark transition-colors">
+  <i class="fas fa-chevron-up text-xs"></i>
+</button>
+
+<!-- ─── SCRIPTS ─── -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js" defer></script>
+
+<script>
+const DRIVE = (id) => `https://lh3.googleusercontent.com/d/${id}`;
+
+function app() {
+  return {
+    mobileMenuOpen: false,
+    lightboxImg: null,
+    scrollY: 0,
+    newsletterEmail: '',
+    newsletterMsg: '',
+
+    categories: [
+      { id: 'katun-lokal',  fabricId: 'katun-lokal',  name: 'Katun Lokal',      tagline: 'Ekonomis & Nyaman',     img: DRIVE('1CVuLJv8ZkFz7ix4iF8YxSlQrOdI-976l') },
+      { id: 'katun-jepang', fabricId: 'katun-jepang', name: 'Katun Jepang',      tagline: 'Halus & Premium',       img: DRIVE('14YMUsnXJ3DhmOGz_DZvoQaAmmJELXxAG') },
+      { id: 'tencel-40',    fabricId: 'tencel',        name: 'Tencel 40s/60s',    tagline: 'Sejuk & Anti-Bakteri',  img: DRIVE('121TQl5pF5S2iAQsbvCWP_qS8rkaEA3t2') },
+      { id: 'tencel-100',   fabricId: 'tencel-100',    name: 'Tencel 100s',       tagline: 'Ultra Premium',         img: DRIVE('101u9T__TCz_lsIndZ6B2BGX4wNjONalm') },
+      { id: 'egyptian',     fabricId: 'egyptian',      name: 'Katun Mesir',       tagline: 'Mewah & Elegan',        img: DRIVE('11GXHhHqZop8x5Mi-58p8uV1ySLgvGIT7') },
+    ],
+
+    fabrics: [
+      {
+        id: 'katun-lokal',
+        name: 'Katun Lokal',
+        tagline: 'Rekomendasi Paling Populer',
+        badge: 'PALING LARIS',
+        color: '#B8860B',
+        activeImg: 0,
+        selectedVariant: null,
+        selectedSize: null,
+        imgs: [
+          DRIVE('1CVuLJv8ZkFz7ix4iF8YxSlQrOdI-976l'),
+          DRIVE('1CwM_n_1AcoKgXEjtiwR4zHyANl8FZWvS'),
+          DRIVE('1EA43KnZc958r87B9OyWicrZ0-nn4aEMp'),
+          DRIVE('1J6F90M_hBv5wgniXS6ftnVEEulAyWHLF'),
+          DRIVE('13Hct9y3Vcab4uG6YFxc4T5gHJplZe6pw'),
+          DRIVE('16CddMLPVd-blZG7TPxw6Jbdcg6geFa1m'),
+          DRIVE('1BZ5h1E_akvIpw0Vf1-EUZuYFdX1jTIzU'),
+          DRIVE('1PHYOfyZmlL_X-FMgSAjxTb0qG-C2FLtv'),
+        ],
+        desc: 'Bahan katun dalam negeri pilihan yang nyaman untuk pemakaian sehari-hari. Serat alami yang menyerap keringat dan bebas bahan kimia berbahaya.',
+        benefits: [
+          'Bernapas & adem — cocok untuk iklim tropis Indonesia',
+          'Warna tahan cuci, tidak mudah luntur meski sering dicuci',
+          'Tersedia pilihan polos dan motif beragam',
+          'Harga paling terjangkau di semua kategori',
+        ],
+        variants: ['Polos', 'Motif Floral', 'Motif Geometris', 'Motif Anak'],
+        sizes: ['90×200', '100×200', '120×200', '140×200', '160×200', '180×200', '200×200'],
+        priceEstimate: 'Mulai Rp 160.000',
+      },
+      {
+        id: 'katun-jepang',
+        name: 'Katun Jepang',
+        tagline: 'Halus & Thread Count Tinggi',
+        badge: 'PREMIUM',
+        color: '#D4526E',
+        activeImg: 0,
+        selectedVariant: null,
+        selectedSize: null,
+        imgs: [
+          DRIVE('14YMUsnXJ3DhmOGz_DZvoQaAmmJELXxAG'),
+          DRIVE('11fUVrT_kJ7q2k1plvCOqHP1rgySrrLY2'),
+          DRIVE('11rWzoiJQL4y48l5WYwgHtPknncVLP7km'),
+          DRIVE('12cqMUGxJLNZgws-I3oaAy9mVK9Pqi-2W'),
+          DRIVE('15HmMJa6KXPuvZjclzGyKBsPuzVmppp8C'),
+          DRIVE('16JHYaOJZlDYH4rmsfXveAamehNuQzXvP'),
+          DRIVE('17YVaq3ezf77UNUv8kP4TQK7dtEB1ao7W'),
+        ],
+        desc: 'Katun impor Jepang dengan serat lebih halus dan rapat. Thread count lebih tinggi menghasilkan tekstur yang terasa lembut di kulit dan tahan lama untuk penggunaan jangka panjang.',
+        benefits: [
+          'Serat lebih halus & rapat dibanding katun lokal',
+          'Thread count tinggi — tidak mudah pilling & berbulu',
+          'Warna lebih cerah berkat proses pencelupan premium',
+          'Cocok sebagai upgrade dari katun biasa',
+        ],
+        variants: ['Polos', 'Motif Floral', 'Motif Geometris', 'Motif Anak'],
+        sizes: ['90×200', '100×200', '120×200', '140×200', '160×200', '180×200', '200×200'],
+        priceEstimate: 'Mulai Rp 215.000',
+      },
+      {
+        id: 'tencel',
+        name: 'Tencel 40s / 60s',
+        tagline: 'Eco-Friendly & Anti-Bakteri Alami',
+        badge: 'ECO',
+        color: '#059669',
+        activeImg: 0,
+        selectedVariant: null,
+        selectedSize: null,
+        imgs: [
+          DRIVE('121TQl5pF5S2iAQsbvCWP_qS8rkaEA3t2'),
+          DRIVE('13-4MMYTj7BhE3sRGS2ZsdqlhfUQHDwbh'),
+          DRIVE('15efwuXwmmep0fyUn1LdG6yAEJSNK_EML'),
+          DRIVE('15hcXysLhuZyg7VA9hVBcaojE96Xzm6K8'),
+          DRIVE('108zjyFeDKqEDuF8z_DMPDjrrYP6qaQ2N'),
+          DRIVE('12t8AHyY6IJVjs7-VHRoVCeapyfdhzA3b'),
+          DRIVE('12zwJUo_Vhgm24H-IsbslZAZcStoEYp3K'),
+          DRIVE('139vwl_O4NhZelWC2gEiGar8M1QtE2fku'),
+        ],
+        desc: 'Tencel/Lyocell dari serat kayu eucalyptus terbarukan dengan proses produksi ramah lingkungan. Tersedia pilihan grade 40s (nyaman sehari-hari) dan 60s (lebih halus & mewah) — keduanya anti-bakteri alami dan menyerap keringat lebih baik dari katun.',
+        benefits: [
+          'Anti-bakteri alami — meminimalkan bau & pertumbuhan kuman',
+          'Menyerap kelembapan 50% lebih baik dari katun biasa',
+          'Pilih grade 40s atau 60s sesuai budget & selera',
+          'Ramah lingkungan, sumber daya terbarukan & biodegradable',
+        ],
+        variants: ['Tencel 40s – Polos', 'Tencel 40s – Motif', 'Tencel 60s – Polos', 'Tencel 60s – Motif'],
+        sizes: ['90×200', '100×200', '120×200', '140×200', '160×200', '180×200', '200×200'],
+        priceEstimate: 'Mulai Rp 260.000',
+      },
+      {
+        id: 'tencel-100',
+        name: 'Tencel 100s',
+        tagline: 'Kelembutan Ultra Premium dari Alam',
+        badge: 'ULTRA PREMIUM',
+        color: '#0369a1',
+        activeImg: 0,
+        selectedVariant: null,
+        selectedSize: null,
+        imgs: [
+          DRIVE('101u9T__TCz_lsIndZ6B2BGX4wNjONalm'),
+          DRIVE('10W7fCVvLNnQcvUiBsmYZpOiG78MCLvWr'),
+          DRIVE('16-ozttJAZNb7zX2jLk4yGIfaVBuEeg4f'),
+          DRIVE('17HFXhrj8mHsRIwjQoGcusqCWq15pLcCd'),
+          DRIVE('18PVbex9flCbSUvrql7R-Vs8CFF_w8wa_'),
+          DRIVE('18z-FN5_gqEGFFPqkdJJxG6TVh4Lx5hUM'),
+          DRIVE('19RVjMCf8SNfkftJ4kCz5qkho6Lyydu7V'),
+        ],
+        desc: 'Tencel 100s adalah puncak dari teknologi serat Lyocell — dengan benang nomor 100, teksturnya luar biasa halus menyerupai sutra. Pilihan tertinggi untuk tidur terbaik setiap malam.',
+        benefits: [
+          'Tekstur setara sutra — sangat halus dan ringan di kulit',
+          'Thermoregulating alami — sejuk saat panas, hangat saat dingin',
+          'Anti-bakteri & hypoallergenic — cocok untuk kulit sensitif',
+          'Ramah lingkungan dengan sertifikasi OEKO-TEX & FSC',
+        ],
+        variants: ['Polos Premium', 'Motif Halus'],
+        sizes: ['90×200', '100×200', '120×200', '140×200', '160×200', '180×200', '200×200'],
+        priceEstimate: 'Mulai Rp 450.000',
+      },
+      {
+        id: 'egyptian',
+        name: 'Katun Mesir (Egyptian Cotton)',
+        tagline: 'Standar Emas Industri Tekstil Dunia',
+        badge: 'MEWAH',
+        color: '#7c3aed',
+        activeImg: 0,
+        selectedVariant: null,
+        selectedSize: null,
+        imgs: [
+          DRIVE('11GXHhHqZop8x5Mi-58p8uV1ySLgvGIT7'),
+          DRIVE('12o3PBrnfQnCKy4yevsvtYTu-z4TkluqT'),
+          DRIVE('1U6aRswbew0uMH5tURN9_E_AeT1DqSDU_'),
+        ],
+        desc: 'Katun Mesir adalah pilihan para pecinta kualitas sejati. Dikenal dengan serat panjang (long-staple cotton) yang menghasilkan kain sangat lembut, kuat, dan justru makin nyaman seiring pemakaian.',
+        benefits: [
+          'Serat panjang (long-staple) — makin lembut makin sering dicuci',
+          'Kualitas setara hotel & resort bintang 5 internasional',
+          'Bernapas sempurna, menjaga suhu tidur tetap ideal sepanjang malam',
+          'Investasi jangka panjang — tidak mudah sobek, pilling, atau pudar',
+        ],
+        variants: ['Polos (pilihan warna lengkap)'],
+        sizes: ['90×200', '100×200', '120×200', '140×200', '160×200', '180×200', '200×200'],
+        priceEstimate: 'Mulai Rp 430.000',
+      },
+    ],
+
+
+    init() {
+      window.addEventListener('scroll', () => { this.scrollY = window.scrollY; });
+      this.$nextTick(() => { this.initSwipers(); });
+    },
+
+    initSwipers() {
+      new Swiper('.hero-swiper', {
+        loop: true,
+        autoplay: { delay: 5000, disableOnInteraction: false },
+        pagination: { el: '.hero-swiper .swiper-pagination', clickable: true },
+        effect: 'fade',
+        fadeEffect: { crossFade: true },
+      });
+      new Swiper('.testimonial-swiper', {
+        slidesPerView: 1, spaceBetween: 16, loop: true,
+        autoplay: { delay: 3500, disableOnInteraction: false, pauseOnMouseEnter: true },
+        pagination: { el: '.testimonial-swiper .swiper-pagination', clickable: true },
+        breakpoints: { 580: { slidesPerView: 2, spaceBetween: 16 }, 1024: { slidesPerView: 3, spaceBetween: 20 } },
+      });
+    },
+
+    scrollToFabric(fabricId) {
+      const el = document.getElementById('fabric-' + fabricId);
+      if (el) {
+        const offset = 80;
+        const top = el.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    },
+
+    waFabricLink(fab) {
+      let lines = ['Halo Couche Home, saya ingin order:',
+                   '',
+                   `*Bahan: ${fab.name}*`];
+      if (fab.selectedVariant) lines.push(`Pilihan: ${fab.selectedVariant}`);
+      if (fab.selectedSize)    lines.push(`Ukuran: ${fab.selectedSize}`);
+      lines.push('', `Estimasi harga: ${fab.priceEstimate}`);
+      lines.push('', 'Mohon info ketersediaan, motif, dan ongkirnya. Terima kasih!');
+      return `https://wa.me/6285280626393?text=${encodeURIComponent(lines.join('\n'))}`;
+    },
+
+    subscribeNewsletter() {
+      if (!this.newsletterEmail) return;
+      this.newsletterMsg = 'Terima kasih! Diskon 10% telah dikirim ke email Anda.';
+      this.newsletterEmail = '';
+    },
+  };
+}
+</script>
+</body>
+</html>
