@@ -3,10 +3,10 @@ FROM nginx:alpine
 WORKDIR /usr/share/nginx/html
 
 # Copy static HTML and assets
-COPY index.html .
-COPY *.webp .
-COPY *.jpeg .
-COPY *.png .
+COPY index.html ./
+COPY *.webp ./
+COPY *.jpeg ./
+COPY *.png ./
 COPY testimonial/ ./testimonial/
 
 # Expose port 80
