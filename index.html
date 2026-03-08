@@ -175,12 +175,12 @@
       <!-- Slide 1 -->
       <div class="swiper-slide">
         <div class="relative h-[440px] sm:h-[520px] bg-gradient-to-br from-[#2c2118] to-[#1a1a2e] flex items-center overflow-hidden">
-          <div class="absolute inset-0 opacity-30" style="background-image:url('https://lh3.googleusercontent.com/d/14YMUsnXJ3DhmOGz_DZvoQaAmmJELXxAG');background-size:cover;background-position:center;"></div>
+          <div class="absolute inset-0 opacity-30" style="background-image:url('kain.jpeg');background-size:cover;background-position:center;"></div>
           <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
           <div class="relative max-w-7xl mx-auto px-6 w-full">
             <div class="max-w-xl">
               <span class="inline-flex items-center gap-1.5 bg-primary/90 text-white text-[11px] font-semibold px-3 py-1 rounded-full mb-5 uppercase tracking-wider"><i class="fas fa-star text-[9px]"></i> Premium Collection</span>
-              <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.1] mb-4">Sprei Premium<br/>Berbagai Bahan</h1>
+              <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold text-white leading-[1.1] mb-4">Bed Cover dan Quilt<br/>Berbagai Bahan</h1>
               <p class="text-white/70 text-sm sm:text-base mb-8 max-w-md leading-relaxed">Katun Lokal, Katun Jepang, Katun Mesir, Tencel 40s, 60s, dan 100s — pilihan terbaik untuk tidur berkualitas.</p>
               <div class="flex gap-3">
                 <a href="#produk" class="bg-primary text-white font-semibold text-sm px-6 py-3 rounded-full hover:bg-amber-700 transition-colors">Lihat Koleksi</a>
@@ -194,7 +194,7 @@
       <!-- Slide 2 -->
       <div class="swiper-slide">
         <div class="relative h-[440px] sm:h-[520px] bg-gradient-to-br from-[#1a3535] to-[#0a1628] flex items-center overflow-hidden">
-          <div class="absolute inset-0 opacity-30" style="background-image:url('https://lh3.googleusercontent.com/d/101u9T__TCz_lsIndZ6B2BGX4wNjONalm');background-size:cover;background-position:center;"></div>
+          <div class="absolute inset-0 opacity-30" style="background-image:url('tencel.jpeg');background-size:cover;background-position:center;"></div>
           <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
           <div class="relative max-w-7xl mx-auto px-6 w-full">
             <div class="max-w-xl">
@@ -213,7 +213,7 @@
       <!-- Slide 3 -->
       <div class="swiper-slide">
         <div class="relative h-[440px] sm:h-[520px] bg-gradient-to-br from-[#2a1a28] to-[#1a0a1e] flex items-center overflow-hidden">
-          <div class="absolute inset-0 opacity-25" style="background-image:url('https://lh3.googleusercontent.com/d/11GXHhHqZop8x5Mi-58p8uV1ySLgvGIT7');background-size:cover;background-position:center;"></div>
+          <div class="absolute inset-0 opacity-25" style="background-image:url('katun-mesir.jpeg');background-size:cover;background-position:center;"></div>
           <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>
           <div class="relative max-w-7xl mx-auto px-6 w-full">
             <div class="max-w-xl">
@@ -785,77 +785,157 @@
     </div>
 
     <!-- Halaman Intro -->
-    <div x-show="quizStep === 0" class="px-8 pb-8 pt-2 text-center">
+    <div x-show="quizCurrentId === null && quizResult === null" class="px-8 pb-8 pt-2 text-center">
       <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
         <i class="fas fa-bed text-primary text-2xl"></i>
       </div>
       <h3 class="font-serif font-bold text-xl text-dark mb-2">Temukan Bahan Sprei Ideal Anda</h3>
-      <p class="text-sm text-gray-500 mb-6 leading-relaxed">Jawab 5 pertanyaan singkat dan kami akan merekomendasikan bahan yang paling cocok untuk kebutuhan tidur Anda.</p>
-      <button @click="quizStep = 1"
+      <p class="text-sm text-gray-500 mb-6 leading-relaxed">Jawab beberapa pertanyaan singkat dan kami rekomendasikan bahan sprei yang paling cocok untuk Anda.</p>
+      <button @click="quizCurrentId = 'q1'"
               class="bg-primary text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-amber-700 transition-colors inline-flex items-center gap-2">
         Mulai Kuis <i class="fas fa-arrow-right text-xs"></i>
       </button>
     </div>
 
     <!-- Pertanyaan -->
-    <template x-for="(question, qIdx) in quizQuestions" :key="qIdx">
-      <div x-show="quizStep === qIdx + 1" class="px-8 pb-8 pt-2">
-        <div class="flex items-center gap-2 mb-6">
-          <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
-            <div class="h-full bg-primary rounded-full transition-all duration-500"
-                 :style="`width:${((qIdx+1)/quizQuestions.length)*100}%`"></div>
-          </div>
-          <span class="text-[11px] text-gray-400 font-medium tabular-nums" x-text="`${qIdx+1}/${quizQuestions.length}`"></span>
+    <div x-show="quizCurrentId !== null" class="px-8 pb-8 pt-2">
+      <!-- Progress bar -->
+      <div class="flex items-center gap-2 mb-6">
+        <div class="flex-1 h-1.5 bg-gray-100 rounded-full overflow-hidden">
+          <div class="h-full bg-primary rounded-full transition-all duration-500"
+               :style="`width:${Math.min(quizHistory.length * 25 + 10, 90)}%`"></div>
         </div>
-        <h4 class="font-serif font-bold text-lg text-dark mb-5" x-text="question.q"></h4>
-        <div class="space-y-2.5">
-          <template x-for="(opt, oIdx) in question.opts" :key="oIdx">
-            <button @click="answerQuiz(qIdx, opt)"
-                    class="w-full text-left p-4 rounded-xl border-2 border-gray-100 hover:border-primary/40 hover:bg-primary/5 transition-all text-sm font-medium text-gray-700 flex items-center gap-3">
-              <span class="w-7 h-7 rounded-full border-2 border-gray-200 flex items-center justify-center text-xs text-gray-400 flex-shrink-0" x-text="['A','B','C'][oIdx]"></span>
-              <span x-text="opt.text"></span>
+        <span class="text-[11px] text-gray-400 font-medium tabular-nums" x-text="`Pertanyaan ${quizHistory.length + 1}`"></span>
+      </div>
+      <template x-if="quizCurrentId !== null">
+        <div>
+          <h4 class="font-serif font-bold text-lg text-dark mb-5" x-text="quizData[quizCurrentId].q"></h4>
+          <div class="space-y-2.5">
+            <template x-for="(opt, oIdx) in quizData[quizCurrentId].opts" :key="oIdx">
+              <button @click="answerQuiz(opt)"
+                      class="w-full text-left p-4 rounded-xl border-2 border-gray-100 hover:border-primary/40 hover:bg-primary/5 transition-all text-sm font-medium text-gray-700 flex items-center gap-3">
+                <span class="w-7 h-7 rounded-full border-2 border-gray-200 flex items-center justify-center text-xs text-gray-400 flex-shrink-0" x-text="['A','B','C'][oIdx]"></span>
+                <span x-text="opt.text"></span>
+              </button>
+            </template>
+          </div>
+          <template x-if="quizHistory.length > 0">
+            <button @click="quizBack()" class="mt-5 text-xs text-gray-400 hover:text-gray-600 transition-colors flex items-center gap-1">
+              <i class="fas fa-arrow-left text-[10px]"></i> Kembali
             </button>
           </template>
         </div>
-      </div>
-    </template>
+      </template>
+    </div>
 
-    <!-- Hasil: Katun -->
-    <div x-show="quizStep === quizQuestions.length + 1 && quizResult === 'katun'" class="px-8 pb-8 pt-2 text-center">
+    <!-- Hasil: Polyester -->
+    <div x-show="quizResult === 'poly'" class="px-8 pb-8 pt-2 text-center">
+      <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <i class="fas fa-tag text-gray-500 text-2xl"></i>
+      </div>
+      <h3 class="font-serif font-bold text-xl text-dark mb-2">Rekomendasi: Polyester</h3>
+      <p class="text-sm text-gray-500 mb-5 leading-relaxed">Untuk kebutuhan harga yang sangat terjangkau, kami menyediakan pilihan bahan polyester. Hubungi admin kami langsung untuk informasi ketersediaan dan harga.</p>
+      <div class="bg-gray-50 border border-gray-200 p-4 rounded-xl text-sm text-gray-600 text-left mb-6">
+        <p class="font-semibold text-dark mb-1">Catatan:</p>
+        <p>Polyester tidak tersedia di halaman produk kami. Silakan hubungi admin via WhatsApp untuk pemesanan.</p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 justify-center">
+        <a href="https://wa.me/6285280626393?text=Halo%20Couche%20Home%2C%20saya%20ingin%20menanyakan%20tentang%20sprei%20polyester." target="_blank"
+           class="bg-green-500 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-green-600 transition-colors inline-flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp"></i> Hubungi Admin
+        </a>
+        <button @click="resetQuiz()" class="text-sm text-gray-400 hover:text-gray-600 transition-colors px-4 py-3">Ulangi Kuis</button>
+      </div>
+    </div>
+
+    <!-- Hasil: Katun Lokal -->
+    <div x-show="quizResult === 'katun-lokal'" class="px-8 pb-8 pt-2 text-center">
       <div class="w-16 h-16 bg-amber-50 rounded-full flex items-center justify-center mx-auto mb-4">
         <i class="fas fa-seedling text-amber-600 text-2xl"></i>
       </div>
-      <h3 class="font-serif font-bold text-xl text-dark mb-2">Anda Cocok dengan Keluarga Katun!</h3>
-      <p class="text-sm text-gray-500 mb-6 leading-relaxed">Berdasarkan jawaban Anda, bahan katun dengan serat kapas alami paling sesuai untuk kebutuhan tidur Anda.</p>
-      <div class="space-y-2 text-left mb-6">
-        <div class="bg-amber-50 border border-amber-100 p-3 rounded-xl text-sm text-gray-700"><strong class="text-dark">Katun Lokal</strong> — Budget-friendly, mulai Rp 160rb</div>
-        <div class="bg-amber-50 border border-amber-100 p-3 rounded-xl text-sm text-gray-700"><strong class="text-dark">Katun Jepang</strong> — Lebih halus &amp; premium, mulai Rp 215rb</div>
-        <div class="bg-amber-50 border border-amber-100 p-3 rounded-xl text-sm text-gray-700"><strong class="text-dark">Katun Mesir</strong> — Ultra premium hotel bintang 5, mulai Rp 430rb</div>
+      <h3 class="font-serif font-bold text-xl text-dark mb-2">Rekomendasi: Katun Lokal</h3>
+      <p class="text-sm text-gray-500 mb-5 leading-relaxed">Pilihan tepat untuk Anda yang ingin kenyamanan maksimal dengan harga yang bersahabat. Serat katun alami yang breathable dan cocok untuk tidur sehari-hari.</p>
+      <div class="bg-amber-50 border border-amber-100 p-3 rounded-xl text-sm text-gray-700 text-left mb-6">
+        <strong class="text-dark">Katun Lokal</strong> — Breathable, tahan lama, mulai Rp 160.000
       </div>
-      <div class="flex flex-col sm:flex-row gap-2 justify-center">
-        <a href="#produk" @click="scrollToFabric('katun-lokal'); quizOpen=false"
-           class="bg-primary text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-amber-700 transition-colors inline-flex items-center justify-center gap-2">
-          Lihat Koleksi Katun <i class="fas fa-arrow-right text-xs"></i>
+      <div class="flex flex-col sm:flex-row gap-2 justify-center flex-wrap">
+        <a href="#fabric-katun-lokal" @click="quizOpen=false"
+           class="bg-primary text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-amber-700 transition-colors inline-flex items-center justify-center gap-2">
+          Lihat Koleksi <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+        <a href="https://wa.me/6285280626393?text=Halo%20Couche%20Home%2C%20saya%20tertarik%20memesan%20Sprei%20Katun%20Lokal.%20Boleh%20minta%20info%20ketersediaan%20dan%20harganya%3F" target="_blank"
+           class="bg-green-500 text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-green-600 transition-colors inline-flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp"></i> Pesan Katun Lokal
+        </a>
+        <button @click="resetQuiz()" class="text-sm text-gray-400 hover:text-gray-600 transition-colors px-4 py-3">Ulangi Kuis</button>
+      </div>
+    </div>
+
+    <!-- Hasil: Katun Jepang -->
+    <div x-show="quizResult === 'katun-jepang'" class="px-8 pb-8 pt-2 text-center">
+      <div class="w-16 h-16 bg-rose-50 rounded-full flex items-center justify-center mx-auto mb-4">
+        <i class="fas fa-star text-rose-400 text-2xl"></i>
+      </div>
+      <h3 class="font-serif font-bold text-xl text-dark mb-2">Rekomendasi: Katun Jepang</h3>
+      <p class="text-sm text-gray-500 mb-5 leading-relaxed">Kombinasi sempurna antara kualitas premium dan harga yang masuk akal. Serat lebih halus dan rapat dibanding katun biasa, cocok untuk Anda yang ingin upgrade kenyamanan tidur.</p>
+      <div class="bg-rose-50 border border-rose-100 p-3 rounded-xl text-sm text-gray-700 text-left mb-6">
+        <strong class="text-dark">Katun Jepang</strong> — Halus, tahan lama, thread count tinggi, mulai Rp 215.000
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 justify-center flex-wrap">
+        <a href="#fabric-katun-jepang" @click="quizOpen=false"
+           class="bg-primary text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-amber-700 transition-colors inline-flex items-center justify-center gap-2">
+          Lihat Koleksi <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+        <a href="https://wa.me/6285280626393?text=Halo%20Couche%20Home%2C%20saya%20tertarik%20memesan%20Sprei%20Katun%20Jepang.%20Boleh%20minta%20info%20ketersediaan%20dan%20harganya%3F" target="_blank"
+           class="bg-green-500 text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-green-600 transition-colors inline-flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp"></i> Pesan Katun Jepang
+        </a>
+        <button @click="resetQuiz()" class="text-sm text-gray-400 hover:text-gray-600 transition-colors px-4 py-3">Ulangi Kuis</button>
+      </div>
+    </div>
+
+    <!-- Hasil: Katun Mesir -->
+    <div x-show="quizResult === 'egyptian'" class="px-8 pb-8 pt-2 text-center">
+      <div class="w-16 h-16 bg-purple-50 rounded-full flex items-center justify-center mx-auto mb-4">
+        <i class="fas fa-crown text-purple-500 text-2xl"></i>
+      </div>
+      <h3 class="font-serif font-bold text-xl text-dark mb-2">Rekomendasi: Katun Mesir</h3>
+      <p class="text-sm text-gray-500 mb-5 leading-relaxed">Pilihan para pecinta kualitas sejati. Serat panjang (long-staple) Egyptian Cotton menghasilkan kain yang sangat lembut, breathable sempurna, dan justru makin nyaman seiring pemakaian.</p>
+      <div class="bg-purple-50 border border-purple-100 p-3 rounded-xl text-sm text-gray-700 text-left mb-6">
+        <strong class="text-dark">Katun Mesir (Egyptian Cotton)</strong> — Standar emas industri tekstil, kualitas hotel bintang 5, mulai Rp 430.000
+      </div>
+      <div class="flex flex-col sm:flex-row gap-2 justify-center flex-wrap">
+        <a href="#fabric-egyptian" @click="quizOpen=false"
+           class="bg-purple-600 text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-purple-700 transition-colors inline-flex items-center justify-center gap-2">
+          Lihat Koleksi <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+        <a href="https://wa.me/6285280626393?text=Halo%20Couche%20Home%2C%20saya%20tertarik%20memesan%20Sprei%20Katun%20Mesir%20(Egyptian%20Cotton).%20Boleh%20minta%20info%20ketersediaan%20dan%20harganya%3F" target="_blank"
+           class="bg-green-500 text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-green-600 transition-colors inline-flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp"></i> Pesan Katun Mesir
         </a>
         <button @click="resetQuiz()" class="text-sm text-gray-400 hover:text-gray-600 transition-colors px-4 py-3">Ulangi Kuis</button>
       </div>
     </div>
 
     <!-- Hasil: Tencel -->
-    <div x-show="quizStep === quizQuestions.length + 1 && quizResult === 'tencel'" class="px-8 pb-8 pt-2 text-center">
+    <div x-show="quizResult === 'tencel'" class="px-8 pb-8 pt-2 text-center">
       <div class="w-16 h-16 bg-teal-50 rounded-full flex items-center justify-center mx-auto mb-4">
         <i class="fas fa-leaf text-teal-600 text-2xl"></i>
       </div>
-      <h3 class="font-serif font-bold text-xl text-dark mb-2">Anda Cocok dengan Keluarga Tencel!</h3>
-      <p class="text-sm text-gray-500 mb-6 leading-relaxed">Berdasarkan jawaban Anda, bahan Tencel/Lyocell dari serat eucalyptus paling sesuai untuk kebutuhan tidur Anda.</p>
+      <h3 class="font-serif font-bold text-xl text-dark mb-2">Rekomendasi: Tencel 60s / 100s</h3>
+      <p class="text-sm text-gray-500 mb-5 leading-relaxed">Bahan terbaik untuk kulit sensitif dan yang mendambakan efek dingin alami. Tencel dari serat eucalyptus bersifat hypoallergenic dan thermoregulating — sejuk saat panas, nyaman sepanjang malam.</p>
       <div class="space-y-2 text-left mb-6">
-        <div class="bg-teal-50 border border-teal-100 p-3 rounded-xl text-sm text-gray-700"><strong class="text-dark">Tencel 40s/60s</strong> — Sejuk &amp; anti-bakteri, mulai Rp 260rb</div>
-        <div class="bg-teal-50 border border-teal-100 p-3 rounded-xl text-sm text-gray-700"><strong class="text-dark">Tencel 100s</strong> — Ultra premium setara sutra, mulai Rp 450rb</div>
+        <div class="bg-teal-50 border border-teal-100 p-3 rounded-xl text-sm text-gray-700"><strong class="text-dark">Tencel 60s</strong> — Silky, halus, hypoallergenic, mulai Rp 320.000</div>
+        <div class="bg-teal-50 border border-teal-100 p-3 rounded-xl text-sm text-gray-700"><strong class="text-dark">Tencel 100s</strong> — Ultra premium setara sutra, mulai Rp 450.000</div>
       </div>
-      <div class="flex flex-col sm:flex-row gap-2 justify-center">
-        <a href="#produk" @click="scrollToFabric('tencel-40'); quizOpen=false"
-           class="bg-teal-600 text-white px-6 py-3 rounded-full font-semibold text-sm hover:bg-teal-700 transition-colors inline-flex items-center justify-center gap-2">
-          Lihat Koleksi Tencel <i class="fas fa-arrow-right text-xs"></i>
+      <div class="flex flex-col sm:flex-row gap-2 justify-center flex-wrap">
+        <a href="#fabric-tencel-60" @click="quizOpen=false"
+           class="bg-teal-600 text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-teal-700 transition-colors inline-flex items-center justify-center gap-2">
+          Lihat Koleksi <i class="fas fa-arrow-right text-xs"></i>
+        </a>
+        <a href="https://wa.me/6285280626393?text=Halo%20Couche%20Home%2C%20saya%20tertarik%20memesan%20Sprei%20Tencel.%20Boleh%20minta%20info%20ketersediaan%20dan%20harganya%3F" target="_blank"
+           class="bg-green-500 text-white px-5 py-3 rounded-full font-semibold text-sm hover:bg-green-600 transition-colors inline-flex items-center justify-center gap-2">
+          <i class="fab fa-whatsapp"></i> Pesan Tencel
         </a>
         <button @click="resetQuiz()" class="text-sm text-gray-400 hover:text-gray-600 transition-colors px-4 py-3">Ulangi Kuis</button>
       </div>
@@ -905,53 +985,49 @@ function app() {
     newsletterEmail: '',
     newsletterMsg: '',
 
-    // Kuis pemilihan bahan
+    // Kuis pemilihan bahan — decision tree
     quizOpen: false,
-    quizStep: 0,
-    quizScores: { katun: 0, tencel: 0 },
+    quizCurrentId: null,
     quizResult: null,
-    quizQuestions: [
-      {
-        q: 'Bagaimana kondisi tidur Anda biasanya?',
+    quizHistory: [],
+    quizData: {
+      'q1': {
+        q: 'Apakah Anda peduli dengan kenyamanan tidur Anda?',
         opts: [
-          { text: 'Sering gerah & berkeringat saat tidur', k: 0, t: 2 },
-          { text: 'Kadang gerah tergantung cuaca', k: 1, t: 1 },
-          { text: 'Jarang berkeringat, cukup nyaman', k: 2, t: 0 },
+          { text: 'Tidak, yang terpenting bagi saya adalah harga terjangkau', result: 'poly' },
+          { text: 'Ya, kenyamanan tidur adalah prioritas saya', next: 'q2' },
         ]
       },
-      {
-        q: 'Berapa budget Anda untuk satu set sprei?',
+      'q2': {
+        q: 'Apakah Anda sensitif terhadap budget?',
         opts: [
-          { text: 'Di bawah Rp 250.000', k: 2, t: 0 },
-          { text: 'Rp 250.000 – Rp 450.000', k: 1, t: 2 },
-          { text: 'Di atas Rp 450.000, yang penting berkualitas', k: 1, t: 1 },
+          { text: 'Ya, saya ingin harga yang sesuai budget', next: 'q_budget' },
+          { text: 'Tidak, kualitas lebih penting dari harga', next: 'q3' },
         ]
       },
-      {
-        q: 'Apakah kulit Anda sensitif terhadap bahan tertentu?',
+      'q3': {
+        q: 'Mana yang lebih penting bagi Anda?',
         opts: [
-          { text: 'Ya, kulit saya mudah iritasi atau alergi', k: 0, t: 2 },
-          { text: 'Kadang-kadang sensitif', k: 1, t: 1 },
-          { text: 'Tidak, kulit saya kuat & jarang masalah', k: 2, t: 0 },
+          { text: 'Breathable (sirkulasi udara baik) dan tahan lama', next: 'q4' },
+          { text: 'Hypoallergenic dan ada efek dingin (meski perawatan lebih hati-hati)', result: 'tencel' },
         ]
       },
-      {
-        q: 'Mana yang lebih penting untuk Anda?',
+      'q4': {
+        q: 'Apakah harga menjadi pertimbangan Anda?',
         opts: [
-          { text: 'Harga terjangkau dengan kualitas bagus', k: 2, t: 0 },
-          { text: 'Bahan ramah lingkungan & anti-bakteri', k: 0, t: 2 },
-          { text: 'Kemewahan & kualitas setara hotel bintang 5', k: 1, t: 1 },
+          { text: 'Jangan terlalu mahal ya', result: 'katun-jepang' },
+          { text: 'Harga tidak jadi masalah', result: 'egyptian' },
         ]
       },
-      {
-        q: 'Tekstur sprei seperti apa yang Anda sukai?',
+      'q_budget': {
+        q: 'Berapa perkiraan budget Anda untuk satu set sprei?',
         opts: [
-          { text: 'Natural & hangat seperti katun klasik', k: 2, t: 0 },
-          { text: 'Sejuk, silky & ringan di kulit', k: 0, t: 2 },
-          { text: 'Belum tahu, yang penting nyaman', k: 1, t: 1 },
+          { text: 'Mulai dari Rp 150.000', result: 'katun-lokal' },
+          { text: 'Mulai dari Rp 200.000', result: 'katun-jepang' },
+          { text: 'Masih kemahalan, cari yang lebih hemat', result: 'poly' },
         ]
       },
-    ],
+    },
 
     categories: [
       { id: 'katun-lokal',  fabricId: 'katun-lokal',  name: 'Katun Lokal',      tagline: 'Ekonomis & Nyaman',     img: DRIVE('1CVuLJv8ZkFz7ix4iF8YxSlQrOdI-976l') },
@@ -1187,21 +1263,27 @@ function app() {
       this.quizOpen = true;
     },
 
-    answerQuiz(qIdx, opt) {
-      this.quizScores.katun += opt.k;
-      this.quizScores.tencel += opt.t;
-      if (qIdx < this.quizQuestions.length - 1) {
-        this.quizStep++;
+    answerQuiz(opt) {
+      this.quizHistory.push(this.quizCurrentId);
+      if (opt.result) {
+        this.quizResult = opt.result;
+        this.quizCurrentId = null;
       } else {
-        this.quizResult = this.quizScores.tencel >= this.quizScores.katun ? 'tencel' : 'katun';
-        this.quizStep = this.quizQuestions.length + 1;
+        this.quizCurrentId = opt.next;
+      }
+    },
+
+    quizBack() {
+      if (this.quizHistory.length > 0) {
+        this.quizCurrentId = this.quizHistory.pop();
+        this.quizResult = null;
       }
     },
 
     resetQuiz() {
-      this.quizStep = 0;
-      this.quizScores = { katun: 0, tencel: 0 };
+      this.quizCurrentId = null;
       this.quizResult = null;
+      this.quizHistory = [];
     },
   };
 }
