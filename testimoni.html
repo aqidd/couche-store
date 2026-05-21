@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimoni Manager - Couche Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg-1: #f6ecdd;
+      --bg-2: #fbf8f2;
+      --panel: rgba(255, 255, 255, 0.93);
+      --panel-strong: #ffffff;
+      --text: #2f2418;
+      --muted: #7d6b57;
+      --accent: #9c6b2b;
+      --accent-dark: #7b4f18;
+      --accent-soft: #f0e1cf;
+      --error: #992f2f;
+      --ok: #1f6b41;
+      --border: #deccb3;
+      --ring: rgba(156, 107, 43, 0.24);
+      --shadow: 0 20px 42px rgba(78, 53, 26, 0.18);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      background:
+        radial-gradient(900px 420px at 12% -8%, #f9d8ab 0%, transparent 60%),
+        radial-gradient(720px 360px at 100% 8%, #f2ccb0 0%, transparent 60%),
+        linear-gradient(160deg, var(--bg-1) 0%, var(--bg-2) 72%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 32px 18px;
+    }
+
+    .card {
+      width: min(980px, 100%);
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(6px);
+      padding: 28px;
+      animation: cardEnter .45s ease-out;
+    }
+
+    @keyframes cardEnter {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .panel-block {
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: var(--panel-strong);
+    }
+
+    .section-title {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.35rem);
+      letter-spacing: -0.03em;
+    }
+
+    p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 68ch;
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid.two-col {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media (max-width: 760px) {
+      .grid.two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 7px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #6e563b;
+    }
+
+    input,
+    textarea,
+    button {
+      font: inherit;
+    }
+
+    input[type="text"],
+    input[type="file"],
+    textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 13px;
+      background: #fffdfa;
+      color: var(--text);
+      transition: border-color .2s, box-shadow .2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="file"]:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 4px var(--ring);
+    }
+
+    input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--accent);
+      cursor: pointer;
+      margin: 0;
+      flex-shrink: 0;
+    }
+
+    textarea {
+      min-height: 132px;
+      resize: vertical;
+    }
+
+    .hint {
+      margin-top: 5px;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    button {
+      border: none;
+      border-radius: 12px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      padding: 11px 16px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(125, 82, 34, .22);
+      transition: transform .15s ease, background .2s ease;
+    }
+
+    button:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    button:disabled { opacity: 0.7; cursor: wait; }
+
+    .status {
+      margin-top: 12px;
+      padding: 11px 13px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      display: none;
+    }
+
+    .status.error {
+      display: block;
+      color: var(--error);
+      background: #fdecec;
+      border: 1px solid #f3c4c4;
+    }
+
+    .status.ok {
+      display: block;
+      color: var(--ok);
+      background: #eaf8f0;
+      border: 1px solid #bee6cf;
+    }
+
+    .preview {
+      margin-top: 6px;
+      max-height: 220px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      object-fit: contain;
+      width: 100%;
+      display: none;
+      background: #fff;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    .toolbar {
+      display: flex;
+      gap: 10px;
+      margin: 0 0 14px;
+      flex-wrap: wrap;
+    }
+
+    .toolbar button {
+      width: auto;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+    }
+
+    .toolbar button.secondary {
+      background: var(--accent-soft);
+      color: #5d4220;
+      box-shadow: none;
+    }
+
+    .toolbar button.secondary:hover {
+      background: #e6d3bc;
+    }
+
+    .list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      max-height: 520px;
+      overflow: auto;
+      padding-right: 6px;
+    }
+
+    .list::-webkit-scrollbar { width: 8px; }
+    .list::-webkit-scrollbar-thumb { background: #d9c0a3; border-radius: 999px; }
+
+    @media (max-width: 860px) {
+      .list {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .item {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 11px;
+      background: linear-gradient(135deg, #fffefb 0%, #fff8ee 100%);
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 12px;
+      align-items: start;
+      cursor: pointer;
+      transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease;
+    }
+
+    .item:hover {
+      border-color: #ccab87;
+      box-shadow: 0 10px 22px rgba(124, 86, 43, 0.14);
+      transform: translateY(-1px);
+    }
+
+    .item.selected {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--ring);
+    }
+
+    .thumb {
+      width: 86px;
+      height: 86px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .item h3 {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+    }
+
+    .item p {
+      margin: 3px 0 0;
+      font-size: 0.8rem;
+      line-height: 1.45;
+      color: #634f37;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .checkline {
+      margin: 0 0 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: #7d6447;
+    }
+
+    .homepage-info {
+      margin: 8px 0 12px;
+      font-size: 0.88rem;
+      color: #5f4a31;
+      background: #fff6e8;
+      border: 1px solid #e7cba7;
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .spacer {
+      margin-top: 18px;
+    }
+
+    @media (max-width: 760px) {
+      body { padding: 16px 10px; }
+      .card {
+        border-radius: 18px;
+        padding: 16px;
+      }
+      .panel-block {
+        padding: 14px;
+        border-radius: 14px;
+      }
+      .toolbar {
+        gap: 8px;
+      }
+      .toolbar button {
+        flex: 1 1 calc(50% - 8px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <h1>Testimoni Manager</h1>
+    <p>Upload testimoni baru, lihat semua testimoni yang tersedia, lalu pilih testimoni yang ingin ditampilkan di homepage.</p>
+
+    <section class="panel-block spacer">
+    <div class="section-title">Tambah Testimoni</div>
+    <form id="testimonialForm" class="grid two-col" enctype="multipart/form-data">
+      <div class="grid">
+        <div>
+          <label for="tracking_code">Package Tracking Code</label>
+          <input id="tracking_code" name="tracking_code" type="text" required maxlength="64" placeholder="Contoh: JNE-ABCD1234" pattern="[A-Za-z0-9_-]{4,64}" />
+          <div class="hint">Hanya huruf, angka, tanda minus (-), dan underscore (_), 4-64 karakter.</div>
+        </div>
+
+        <div>
+          <label for="customer_name">Customer Name</label>
+          <input id="customer_name" name="customer_name" type="text" required maxlength="120" placeholder="Nama pelanggan" />
+        </div>
+
+        <div>
+          <label for="image">Image</label>
+          <input id="image" name="image" type="file" accept=".png,.jpg,.jpeg,.webp" required />
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label for="testimonial_text">Testimonial Text</label>
+          <textarea id="testimonial_text" name="testimonial_text" required maxlength="5000" placeholder="Tulis testimoni pelanggan di sini..."></textarea>
+        </div>
+        <img id="preview" class="preview" alt="Image preview" />
+      </div>
+
+      <button id="submitButton" type="submit">Simpan Testimoni</button>
+      <div id="status" class="status"></div>
+    </form>
+    </section>
+
+    <section class="panel-block spacer">
+    <div class="section-title">Pilih Testimoni Homepage</div>
+    <div class="toolbar">
+      <button id="refreshListButton" type="button" class="secondary">Refresh Daftar</button>
+      <button id="selectLatestButton" type="button" class="secondary">Pilih 10 Terbaru</button>
+      <button id="clearSelectionButton" type="button" class="secondary">Gunakan Mode Default</button>
+      <button id="saveSelectionButton" type="button">Update Homepage</button>
+    </div>
+    <div class="homepage-info" id="homepageInfo">Memuat data testimoni...</div>
+    <div class="muted" style="margin-bottom:10px;">Mode default: homepage menampilkan 10 testimoni metadata terbaru. Jika metadata belum ada, homepage menampilkan 10 gambar terbaru dari folder testimonial.</div>
+    <div id="testimonyList" class="list"></div>
+    <div id="selectionStatus" class="status"></div>
+    </section>
+
+    <template id="itemTemplate">
+      <label class="item">
+        <img class="thumb" alt="thumbnail" />
+        <div>
+          <div class="checkline">
+            <input type="checkbox" class="item-check" />
+            <span class="item-meta"></span>
+          </div>
+          <h3 class="item-title"></h3>
+          <p class="item-text"></p>
+        </div>
+      </label>
+    </template>
+
+    <script>
+      const form = document.getElementById("testimonialForm");
+      const statusBox = document.getElementById("status");
+      const submitButton = document.getElementById("submitButton");
+      const imageInput = document.getElementById("image");
+      const preview = document.getElementById("preview");
+
+      const listContainer = document.getElementById("testimonyList");
+      const itemTemplate = document.getElementById("itemTemplate");
+      const homepageInfo = document.getElementById("homepageInfo");
+      const selectionStatus = document.getElementById("selectionStatus");
+      const refreshListButton = document.getElementById("refreshListButton");
+      const selectLatestButton = document.getElementById("selectLatestButton");
+      const clearSelectionButton = document.getElementById("clearSelectionButton");
+      const saveSelectionButton = document.getElementById("saveSelectionButton");
+
+      let availableItems = [];
+      let selectedIds = new Set();
+
+      imageInput.addEventListener("change", () => {
+        const file = imageInput.files && imageInput.files[0];
+        if (!file) {
+          preview.style.display = "none";
+          preview.removeAttribute("src");
+          return;
+        }
+        preview.src = URL.createObjectURL(file);
+        preview.style.display = "block";
+      });
+
+      function setStatus(target, type, message) {
+        target.className = "status " + type;
+        target.textContent = message;
+      }
+
+      function setHomepageInfo(usingDefault, selectedCount, homepageCount) {
+        if (usingDefault) {
+          homepageInfo.textContent = "Homepage sedang memakai mode default otomatis.";
+          return;
+        }
+        homepageInfo.textContent = "Homepage memakai pilihan manual: " + selectedCount + " item dipilih, " + homepageCount + " item tampil.";
+      }
+
+      function renderItems() {
+        listContainer.innerHTML = "";
+        if (!availableItems.length) {
+          listContainer.innerHTML = "<div class=\"muted\">Belum ada testimoni/gambar di folder testimonial.</div>";
+          return;
+        }
+
+        for (const item of availableItems) {
+          const node = itemTemplate.content.cloneNode(true);
+          const check = node.querySelector(".item-check");
+          const meta = node.querySelector(".item-meta");
+          const title = node.querySelector(".item-title");
+          const text = node.querySelector(".item-text");
+          const img = node.querySelector(".thumb");
+          const itemCard = node.querySelector(".item");
+
+          check.dataset.id = item.id;
+          check.checked = selectedIds.has(item.id);
+          itemCard.classList.toggle("selected", check.checked);
+          check.addEventListener("change", (event) => {
+            if (event.target.checked) {
+              selectedIds.add(item.id);
+            } else {
+              selectedIds.delete(item.id);
+            }
+            itemCard.classList.toggle("selected", event.target.checked);
+          });
+
+          meta.textContent = item.source === "metadata" ? "Testimoni metadata" : "Gambar folder";
+          title.textContent = item.source === "metadata"
+            ? (item.customer_name || "Tanpa Nama") + " • " + item.tracking_code
+            : item.image.replace("testimonial/", "");
+          text.textContent = item.source === "metadata"
+            ? (item.testimonial_text || "-")
+            : "Gambar fallback tanpa metadata testimoni";
+          img.src = "/" + item.image;
+
+          listContainer.appendChild(node);
+        }
+      }
+
+      async function loadTestimonials() {
+        setStatus(selectionStatus, "", "");
+        try {
+          const response = await fetch("/api/testimonials");
+          const payload = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error(payload.error || "Gagal memuat daftar testimoni (HTTP " + response.status + ")");
+          }
+
+          availableItems = payload.available || [];
+          selectedIds = new Set(payload.selected_ids || []);
+          setHomepageInfo(Boolean(payload.using_default), selectedIds.size, (payload.homepage || []).length);
+          renderItems();
+        } catch (error) {
+          setStatus(selectionStatus, "error", error.message || "Gagal memuat data");
+        }
+      }
+
+      async function saveSelection() {
+        saveSelectionButton.disabled = true;
+        saveSelectionButton.textContent = "Updating...";
+
+        try {
+          const response = await fetch("/api/homepage-testimonials", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ selected_ids: Array.from(selectedIds) })
+          });
+
+          const payload = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error(payload.error || "Gagal update homepage");
+          }
+
+          setHomepageInfo(Boolean(payload.using_default), (payload.selected_ids || []).length, (payload.homepage || []).length);
+          setStatus(selectionStatus, "ok", "Homepage berhasil di-update.");
+          await loadTestimonials();
+        } catch (error) {
+          setStatus(selectionStatus, "error", error.message || "Gagal update homepage");
+        } finally {
+          saveSelectionButton.disabled = false;
+          saveSelectionButton.textContent = "Update Homepage";
+        }
+      }
+
+      refreshListButton.addEventListener("click", loadTestimonials);
+      selectLatestButton.addEventListener("click", () => {
+        const topTen = availableItems
+          .filter((item) => item.source === "metadata")
+          .slice(0, 10)
+          .map((item) => item.id);
+        selectedIds = new Set(topTen);
+        renderItems();
+        setStatus(selectionStatus, "ok", "10 testimoni metadata terbaru sudah dipilih. Klik Update Homepage untuk menyimpan.");
+      });
+      clearSelectionButton.addEventListener("click", () => {
+        selectedIds = new Set();
+        renderItems();
+        setStatus(selectionStatus, "ok", "Pilihan manual dikosongkan. Klik Update Homepage untuk memakai mode default.");
+      });
+      saveSelectionButton.addEventListener("click", saveSelection);
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        setStatus(statusBox, "", "");
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Menyimpan...";
+
+        try {
+          const formData = new FormData(form);
+          const response = await fetch("/api/testimonials", {
+            method: "POST",
+            body: formData
+          });
+
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error(result.error || "Gagal menyimpan testimoni");
+          }
+
+          setStatus(statusBox, "ok", "Berhasil disimpan. Homepage otomatis direfresh berdasarkan mode aktif.");
+          form.reset();
+          preview.style.display = "none";
+          preview.removeAttribute("src");
+          await loadTestimonials();
+        } catch (error) {
+          setStatus(statusBox, "error", error.message || "Terjadi kesalahan");
+        } finally {
+          submitButton.disabled = false;
+          submitButton.textContent = "Simpan Testimoni";
+        }
+      });
+
+      loadTestimonials();
+    </script>
+  </main>
+</body>
+</html>

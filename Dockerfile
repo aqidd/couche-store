@@ -1,16 +1,20 @@
-FROM nginx:alpine
+FROM python:3.12-alpine
 
-WORKDIR /usr/share/nginx/html
+WORKDIR /app
 
-# Copy static HTML and assets
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+
+ENV PORT=80
+
+COPY app.py ./
 COPY index.html ./
+COPY testimoni.html ./
 COPY *.webp ./
 COPY *.jpeg ./
 COPY *.png ./
 COPY testimonial/ ./testimonial/
 
-# Expose port 80
 EXPOSE 80
 
-# Start nginx in foreground mode
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["python", "app.py"]
