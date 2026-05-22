@@ -14,6 +14,7 @@ COPY *.webp ./
 COPY *.jpeg ./
 COPY *.png ./
 COPY testimonial/ ./testimonial/
+COPY catalog/ ./catalog/
 
 EXPOSE 80
 
